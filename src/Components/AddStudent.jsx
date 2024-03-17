@@ -6,12 +6,12 @@ const AddStudent = () => {
     name: "",
     email: "",
     password: "",
-    category_id: "",
+    department_id: "",
   });
-  const [category] = useState([
-    { id: 1, name: "Category 1" },
-    { id: 2, name: "Category 2" },
-    { id: 3, name: "Category 3" },
+  const [department] = useState([
+    { id: 1, name: "Department 1" },
+    { id: 2, name: "Department 2" },
+    { id: 3, name: "Department 3" },
   ]);
   const navigate = useNavigate();
 
@@ -71,18 +71,18 @@ const AddStudent = () => {
             />
           </div>
           <div className="col-12">
-            <label htmlFor="category" className="form-label">
-              Category
+            <label htmlFor="department" className="form-label">
+              Department
             </label>
             <select
-              name="category"
-              id="category"
+              name="department"
+              id="department"
               className="form-select"
               onChange={(e) =>
-                setStudent({ ...student, category_id: e.target.value })
+                setStudent({ ...student, department_id: e.target.value })
               }
             >
-              {category.map((c) => {
+              {department.map((c) => {
                 return (
                   <option key={c.id} value={c.id}>
                     {c.name}
@@ -103,5 +103,6 @@ const AddStudent = () => {
 };
 
 export default AddStudent;
+
 
 

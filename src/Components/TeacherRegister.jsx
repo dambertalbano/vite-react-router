@@ -6,21 +6,21 @@ const TeacherRegister = () => {
     name: "",
     email: "",
     password: "",
-    category_id: "",
+    department_id: "",
   });
-  const [category, setCategory] = useState([]);
+  const [department, setDepartment] = useState([]);
   const navigate = useNavigate();
 
-  // Simulated category data
+  // Simulated department data
   const mockCategories = [
-    { id: 1, name: "Category 1" },
-    { id: 2, name: "Category 2" },
-    { id: 3, name: "Category 3" },
+    { id: 1, name: "Department 1" },
+    { id: 2, name: "Department 2" },
+    { id: 3, name: "Department 3" },
   ];
 
   useEffect(() => {
-    // Simulating category fetch
-    setCategory(mockCategories);
+    // Simulating department fetch
+    setDepartment(mockCategories);
   }, []);
 
   const handleSubmit = (e) => {
@@ -79,18 +79,18 @@ const TeacherRegister = () => {
             />
           </div>
           <div className="col-12">
-            <label htmlFor="category" className="form-label">
-              Category
+            <label htmlFor="department" className="form-label">
+              Department
             </label>
             <select
-              name="category"
-              id="category"
+              name="department"
+              id="department"
               className="form-select"
               onChange={(e) =>
-                setTeacher({ ...Teacher, category_id: e.target.value })
+                setTeacher({ ...Teacher, department_id: e.target.value })
               }
             >
-              {category.map((c) => {
+              {department.map((c) => {
                 return (
                   <option key={c.id} value={c.id}>
                     {c.name}
@@ -111,5 +111,6 @@ const TeacherRegister = () => {
 };
 
 export default TeacherRegister;
+
 
 

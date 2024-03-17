@@ -6,24 +6,24 @@ const AddTeacher = () => {
     name: "",
     email: "",
     password: "",
-    category_id: "",
+    department_id: "",
   });
-  const [category, setCategory] = useState([]);
+  const [department, setDepartment] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Simulate fetching category data
-    const fetchCategory = () => {
-      // Mock category data
-      const mockCategory = [
-        { id: 1, name: "Category 1" },
-        { id: 2, name: "Category 2" },
-        { id: 3, name: "Category 3" },
+    // Simulate fetching department data
+    const fetchDepartment = () => {
+      // Mock department data
+      const mockDepartment = [
+        { id: 1, name: "Department 1" },
+        { id: 2, name: "Department 2" },
+        { id: 3, name: "Department 3" },
       ];
-      setCategory(mockCategory);
+      setDepartment(mockDepartment);
     };
 
-    fetchCategory();
+    fetchDepartment();
   }, []);
 
   const handleSubmit = (e) => {
@@ -36,7 +36,7 @@ const AddTeacher = () => {
         teacher.name.trim() !== "" &&
         teacher.email.trim() !== "" &&
         teacher.password.trim() !== "" &&
-        teacher.category_id.trim() !== ""
+        teacher.department_id.trim() !== ""
       ) {
         // Simulate success by navigating to teacher page
         navigate("/dashboard/teacher");
@@ -101,20 +101,20 @@ const AddTeacher = () => {
             />
           </div>
           <div className="col-12">
-            <label htmlFor="category" className="form-label">
-              Category
+            <label htmlFor="department" className="form-label">
+              Department
             </label>
             <select
-              name="category"
-              id="category"
+              name="department"
+              id="department"
               className="form-select"
-              value={teacher.category_id}
+              value={teacher.department_id}
               onChange={(e) =>
-                setTeacher({ ...teacher, category_id: e.target.value })
+                setTeacher({ ...teacher, department_id: e.target.value })
               }
             >
-              <option value="">Select Category</option>
-              {category.map((c) => (
+              <option value="">Select Department</option>
+              {department.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.name}
                 </option>
@@ -133,3 +133,6 @@ const AddTeacher = () => {
 };
 
 export default AddTeacher;
+
+
+

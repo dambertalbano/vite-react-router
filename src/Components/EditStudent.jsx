@@ -6,12 +6,12 @@ const EditStudent = () => {
     const [student, setStudent] = useState({
         name: "",
         email: "",
-        category_id: "",
+        department_id: "",
     });
-    const [category] = useState([
-        { id: 1, name: "Category 1" },
-        { id: 2, name: "Category 2" },
-        { id: 3, name: "Category 3" },
+    const [department] = useState([
+        { id: 1, name: "Department 1" },
+        { id: 2, name: "Department 2" },
+        { id: 3, name: "Department 3" },
     ]);
     const navigate = useNavigate()
 
@@ -19,7 +19,7 @@ const EditStudent = () => {
         // Simulate fetching student details
         const fetchStudentDetail = () => {
             // Simulated student data
-            const fakeStudent = { id: 1, name: "John Doe", email: "john@example.com", category_id: 1 };
+            const fakeStudent = { id: 1, name: "John Doe", email: "john@example.com", department_id: 1 };
             if (id === '1') {
                 setStudent(fakeStudent);
             }
@@ -72,19 +72,19 @@ const EditStudent = () => {
                         />
                     </div>
                     <div className="col-12">
-                        <label htmlFor="category" className="form-label">
-                            Category
+                        <label htmlFor="department" className="form-label">
+                            Department
                         </label>
                         <select
-                            name="category"
-                            id="category"
+                            name="department"
+                            id="department"
                             className="form-select"
-                            value={student.category_id}
+                            value={student.department_id}
                             onChange={(e) =>
-                                setStudent({ ...student, category_id: e.target.value })
+                                setStudent({ ...student, department_id: e.target.value })
                             }
                         >
-                            {category.map((c) => {
+                            {department.map((c) => {
                                 return <option key={c.id} value={c.id}>{c.name}</option>;
                             })}
                         </select>
@@ -101,5 +101,6 @@ const EditStudent = () => {
 };
 
 export default EditStudent;
+
 
 

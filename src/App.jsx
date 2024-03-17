@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import AddCategory from "./Components/AddCategory";
+import AddDepartment from "./Components/AddDepartment";
 import AddStudent from "./Components/AddStudent";
 import AddTeacher from "./Components/AddTeacher";
-import Category from "./Components/Category";
 import Dashboard from "./Components/Dashboard";
+import Department from "./Components/Department";
 import EditStudent from "./Components/EditStudent";
 import EditTeacher from "./Components/EditTeacher";
 import Home from "./Components/Home";
@@ -37,11 +37,11 @@ function App() {
           <Route path="" element={<Home />}></Route>
           <Route path="/dashboard/student" element={<Student />}></Route>
           <Route path="/dashboard/teacher" element={<Teacher />}></Route>
-          <Route path="/dashboard/category" element={<Category />}></Route>
+          <Route path="/dashboard/department" element={<Department />}></Route>
           <Route path="/dashboard/profile" element={<Profile />}></Route>
           <Route
-            path="/dashboard/add_category"
-            element={<AddCategory />}
+            path="/dashboard/add_department"
+            element={<AddDepartment />}
           ></Route>
           <Route
             path="/dashboard/add_student"
@@ -63,5 +63,6 @@ function App() {
 }
 
 export default App;
+
 
 

@@ -6,26 +6,26 @@ const EditTeacher = () => {
     const [teacher, setTeacher] = useState({
         name: "",
         email: "",
-        category_id: "",
+        department_id: "",
     });
-    const [category, setCategory] = useState([]);
+    const [department, setDepartment] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Mock category data
-        const mockCategoryData = [
-            { id: 1, name: 'Category 1' },
-            { id: 2, name: 'Category 2' },
-            { id: 3, name: 'Category 3' },
+        // Mock department data
+        const mockDepartmentData = [
+            { id: 1, name: 'Department 1' },
+            { id: 2, name: 'Department 2' },
+            { id: 3, name: 'Department 3' },
         ];
-        setCategory(mockCategoryData);
+        setDepartment(mockDepartmentData);
 
         // Mock teacher data
         const mockTeacherData = {
             id: id,
             name: 'John Doe',
             email: 'johndoe@example.com',
-            category_id: 1,
+            department_id: 1,
         };
         setTeacher(mockTeacherData);
     }, [id]);
@@ -67,14 +67,14 @@ const EditTeacher = () => {
                         />
                     </div>
                     <div className="col-12">
-                        <label htmlFor="category" className="form-label">Category</label>
+                        <label htmlFor="department" className="form-label">Department</label>
                         <select
-                            name="category"
-                            id="category"
+                            name="department"
+                            id="department"
                             className="form-select"
-                            onChange={(e) => setTeacher({ ...teacher, category_id: e.target.value })}
+                            onChange={(e) => setTeacher({ ...teacher, department_id: e.target.value })}
                         >
-                            {category.map((c) => (
+                            {department.map((c) => (
                                 <option key={c.id} value={c.id}>
                                     {c.name}
                                 </option>
@@ -91,3 +91,5 @@ const EditTeacher = () => {
 };
 
 export default EditTeacher;
+
+

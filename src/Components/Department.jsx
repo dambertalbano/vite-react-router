@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Category = () => {
-  const [category, setCategory] = useState([]);
+const Department = () => {
+  const [department, setDepartment] = useState([]);
 
-  // Simulated category data
-  const mockCategory = [
-    { id: 1, name: 'Category 1' },
-    { id: 2, name: 'Category 2' },
-    { id: 3, name: 'Category 3' },
+  // Simulated department data
+  const mockDepartment = [
+    { id: 1, name: 'Department 1' },
+    { id: 2, name: 'Department 2' },
+    { id: 3, name: 'Department 3' },
   ];
 
-  // Simulate fetching category data
-  const fetchCategory = () => {
-    setCategory(mockCategory);
+  // Simulate fetching department data
+  const fetchDepartment = () => {
+    setDepartment(mockDepartment);
   };
 
   useEffect(() => {
-    // Call fetchCategory on component mount
-    fetchCategory();
+    // Call fetchDepartment on component mount
+    fetchDepartment();
   }, []); // Empty dependency array to run once on mount
 
   return (
@@ -26,7 +26,7 @@ const Category = () => {
       <div className="d-flex justify-content-center">
         <h3>Department List</h3>
       </div>
-      <Link to="/dashboard/add_category" className="btn btn-success">
+      <Link to="/dashboard/add_department" className="btn btn-success">
         Add Department
       </Link>
       <div className="mt-3">
@@ -37,7 +37,7 @@ const Category = () => {
             </tr>
           </thead>
           <tbody>
-            {category.map((c) => (
+            {department.map((c) => (
               <tr key={c.id}>
                 <td>{c.name}</td>
               </tr>
@@ -49,4 +49,6 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Department;
+
+

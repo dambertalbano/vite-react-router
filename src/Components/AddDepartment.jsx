@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const AddCategory = () => {
-    const [category, setCategory] = useState('');
+const AddDepartment = () => {
+    const [department, setDepartment] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Simulate adding category without making HTTP request
-        const fakeAddCategory = () => {
-            // Check if category is not empty
-            if (category.trim() !== '') {
-                // Simulate success by navigating to category page
-                navigate('/dashboard/category');
+        // Simulate adding department without making HTTP request
+        const fakeAddDepartment = () => {
+            // Check if department is not empty
+            if (department.trim() !== '') {
+                // Simulate success by navigating to department page
+                navigate('/dashboard/department');
             } else {
                 // Simulate error by showing an alert
-                alert('Please enter a category name');
+                alert('Please enter a department name');
             }
         };
 
-        fakeAddCategory();
+        fakeAddDepartment();
     };
 
     return (
@@ -29,13 +29,13 @@ const AddCategory = () => {
                 <h2>Add Department</h2>
                 <form onSubmit={handleSubmit}>
                     <div className='mb-3'>
-                        <label htmlFor="category"><strong>Department:</strong></label>
+                        <label htmlFor="department"><strong>Department:</strong></label>
                         <input
                             type="text"
-                            name='category'
-                            placeholder='Enter Category'
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
+                            name='department'
+                            placeholder='Enter Department'
+                            value={department}
+                            onChange={(e) => setDepartment(e.target.value)}
                             className='form-control rounded-0'
                         />
                     </div>
@@ -46,4 +46,6 @@ const AddCategory = () => {
     );
 };
 
-export default AddCategory;
+export default AddDepartment;
+
+
