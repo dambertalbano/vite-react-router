@@ -27,51 +27,51 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/vite-react-router/",
       element: <Start />
     },
     {
-      path: "/adminlogin",
+      path: "/vite-react-router/adminlogin",
       element: <Login />
     },
     {
-      path: "/employee_login",
+      path: "/vite-react-router/employee_login",
       element: <EmployeeLogin />
     },
     {
-      path: "/employee_detail/:id",
+      path: "/vite-react-router/employee_detail/:id",
       element: <EmployeeDetail />
     },
     {
-      path: "/teacher_login",
+      path: "/vite-react-router/teacher_login",
       element: <TeacherLogin />
     },
     {
-      path: "/teacher_detail/:id",
+      path: "/vite-react-router/teacher_detail/:id",
       element: <TeacherDetail />
     },
     {
-      path: "/teacher_register",
+      path: "/vite-react-router/teacher_register",
       element: <TeacherRegister />
     },
     {
-      path: "/employee_register",
+      path: "/vite-react-router/employee_register",
       element: <EmployeeRegister />
     },
     {
-      path: "/dashboard",
+      path: "/vite-react-router/dashboard",
       element: <Dashboard />,
       children: [
-        { path: "/", element: <Home /> },
-        { path: "employee", element: <Employee /> },
-        { path: "teacher", element: <Teacher /> },
-        { path: "category", element: <Category /> },
-        { path: "profile", element: <Profile /> },
-        { path: "add_category", element: <AddCategory /> },
-        { path: "add_employee", element: <AddEmployee /> },
-        { path: "edit_employee/:id", element: <EditEmployee /> },
-        { path: "add_teacher", element: <AddTeacher /> },
-        { path: "edit_teacher/:id", element: <EditTeacher /> }
+        { path: "/vite-react-router/", element: <Home /> },
+        { path: "/vite-react-router/employee", element: <Employee /> },
+        { path: "/vite-react-router/teacher", element: <Teacher /> },
+        { path: "/vite-react-router/category", element: <Category /> },
+        { path: "/vite-react-router/profile", element: <Profile /> },
+        { path: "/vite-react-router/add_category", element: <AddCategory /> },
+        { path: "/vite-react-router/add_employee", element: <AddEmployee /> },
+        { path: "/vite-react-router/edit_employee/:id", element: <EditEmployee /> },
+        { path: "/vite-react-router/add_teacher", element: <AddTeacher /> },
+        { path: "/vite-react-router/edit_teacher/:id", element: <EditTeacher /> }
       ]
     }
   ]);
@@ -79,25 +79,25 @@ function App() {
   return (
     <RouterProvider router={router}>
       <Routes>
-        <Route path="/" element={<Start />} />
-        <Route path="/adminlogin" element={<Login />} />
-        <Route path="/employee_login" element={<EmployeeLogin />} />
-        <Route path="/employee_detail/:id" element={<EmployeeDetail />} />
-        <Route path="/teacher_login" element={<TeacherLogin />} />
-        <Route path="/teacher_detail/:id" element={<TeacherDetail />} />
-        <Route path="/teacher_register" element={<TeacherRegister />} />
-        <Route path="/employee_register" element={<EmployeeRegister />} />
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="/" element={<Home />} />
-          <Route path="employee" element={<Employee />} />
-          <Route path="teacher" element={<Teacher />} />
-          <Route path="category" element={<Category />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="add_category" element={<AddCategory />} />
-          <Route path="add_employee" element={<AddEmployee />} />
-          <Route path="edit_employee/:id" element={<EditEmployee />} />
-          <Route path="add_teacher" element={<AddTeacher />} />
-          <Route path="edit_teacher/:id" element={<EditTeacher />} />
+        <Route path="/vite-react-router/" element={<Start />} />
+        <Route path="/vite-react-router/adminlogin" element={<Login />} />
+        <Route path="/vite-react-router/employee_login" element={<EmployeeLogin />} />
+        <Route path="/vite-react-router/employee_detail/:id" element={<EmployeeDetail />} />
+        <Route path="/vite-react-router/teacher_login" element={<TeacherLogin />} />
+        <Route path="/vite-react-router/teacher_detail/:id" element={<TeacherDetail />} />
+        <Route path="/vite-react-router/teacher_register" element={<TeacherRegister />} />
+        <Route path="/vite-react-router/employee_register" element={<EmployeeRegister />} />
+        <Route path="/vite-react-router/dashboard" element={<Dashboard />}>
+          <Route path="/vite-react-router/" element={<Home />} />
+          <Route path="/vite-react-router/employee" element={<Employee />} />
+          <Route path="/vite-react-router/teacher" element={<Teacher />} />
+          <Route path="/vite-react-router/category" element={<Category />} />
+          <Route path="/vite-react-router/profile" element={<Profile />} />
+          <Route path="/vite-react-router/add_category" element={<AddCategory />} />
+          <Route path="/vite-react-router/add_employee" element={<AddEmployee />} />
+          <Route path="/vite-react-router/edit_employee/:id" element={<EditEmployee />} />
+          <Route path="/vite-react-router/add_teacher" element={<AddTeacher />} />
+          <Route path="/vite-react-router/edit_teacher/:id" element={<EditTeacher />} />
         </Route>
       </Routes>
     </RouterProvider>
