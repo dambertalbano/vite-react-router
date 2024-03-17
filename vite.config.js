@@ -1,9 +1,8 @@
-import reactRefresh from '@vitejs/plugin-react-refresh';
-import { defineConfig } from 'vite';
-import reactPages from 'vite-plugin-react-pages';
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [reactRefresh(), reactPages()],
+  plugins: [react()],
   base: "/vite-react-router/"
-});
+})
