@@ -22,30 +22,85 @@ import TeacherDetail from "./Components/TeacherDetail";
 import TeacherLogin from "./Components/TeacherLogin";
 import TeacherRegister from "./Components/TeacherRegister";
 
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Start />
+    },
+    {
+      path: "/adminlogin",
+      element: <Login />
+    },
+    {
+      path: "/employee_login",
+      element: <EmployeeLogin />
+    },
+    {
+      path: "/employee_detail/:id",
+      element: <EmployeeDetail />
+    },
+    {
+      path: "/teacher_login",
+      element: <TeacherLogin />
+    },
+    {
+      path: "/teacher_detail/:id",
+      element: <TeacherDetail />
+    },
+    {
+      path: "/teacher_register",
+      element: <TeacherRegister />
+    },
+    {
+      path: "/employee_register",
+      element: <EmployeeRegister />
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />,
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "employee", element: <Employee /> },
+        { path: "teacher", element: <Teacher /> },
+        { path: "category", element: <Category /> },
+        { path: "profile", element: <Profile /> },
+        { path: "add_category", element: <AddCategory /> },
+        { path: "add_employee", element: <AddEmployee /> },
+        { path: "edit_employee/:id", element: <EditEmployee /> },
+        { path: "add_teacher", element: <AddTeacher /> },
+        { path: "edit_teacher/:id", element: <EditTeacher /> }
+      ]
+    }
+  ]);
+
   return (
-    <Routes>
-      <Route path="/" element={<Start />} />
-      <Route path="/adminlogin" element={<Login />} />
-      <Route path="/employee_login" element={<EmployeeLogin />} />
-      <Route path="/employee_detail/:id" element={<EmployeeDetail />} />
-      <Route path="/teacher_login" element={<TeacherLogin />} />
-      <Route path="/teacher_detail/:id" element={<TeacherDetail />} />
-      <Route path="/teacher_register" element={<TeacherRegister />} />
-      <Route path="/employee_register" element={<EmployeeRegister />} />
-      <Route path="/dashboard" element={<Dashboard />}>
-        <Route path="/" element={<Home />} />
-        <Route path="employee" element={<Employee />} />
-        <Route path="teacher" element={<Teacher />} />
-        <Route path="category" element={<Category />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="add_category" element={<AddCategory />} />
-        <Route path="add_employee" element={<AddEmployee />} />
-        <Route path="edit_employee/:id" element={<EditEmployee />} />
-        <Route path="add_teacher" element={<AddTeacher />} />
-        <Route path="edit_teacher/:id" element={<EditTeacher />} />
-      </Route>
-    </Routes>
+    <RouterProvider router={router}>
+      <Routes>
+        <Route path="/" element={<Start />} />
+        <Route path="/adminlogin" element={<Login />} />
+        <Route path="/employee_login" element={<EmployeeLogin />} />
+        <Route path="/employee_detail/:id" element={<EmployeeDetail />} />
+        <Route path="/teacher_login" element={<TeacherLogin />} />
+        <Route path="/teacher_detail/:id" element={<TeacherDetail />} />
+        <Route path="/teacher_register" element={<TeacherRegister />} />
+        <Route path="/employee_register" element={<EmployeeRegister />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/" element={<Home />} />
+          <Route path="employee" element={<Employee />} />
+          <Route path="teacher" element={<Teacher />} />
+          <Route path="category" element={<Category />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="add_category" element={<AddCategory />} />
+          <Route path="add_employee" element={<AddEmployee />} />
+          <Route path="edit_employee/:id" element={<EditEmployee />} />
+          <Route path="add_teacher" element={<AddTeacher />} />
+          <Route path="edit_teacher/:id" element={<EditTeacher />} />
+        </Route>
+      </Routes>
+    </RouterProvider>
   );
 }
 
