@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 
-const TeacherLogin = () => {
+const AdminLogin = () => {
     const [values, setValues] = useState({
         email: '',
         password: ''
@@ -61,4 +61,4 @@ const TeacherLogin = () => {
     );
 };
 
-export default TeacherLogin;
+export default AdminLogin;
