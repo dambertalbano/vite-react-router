@@ -23,8 +23,8 @@ const Start = () => {
   const handleLogin = (role) => {
     if (role === "admin") {
       navigate("/adminlogin");
-    } else if (role === "employee") {
-      navigate("/employee_login/" );
+    } else if (role === "student") {
+      navigate("/student_login/" );
     } else if (role === "teacher") {
       navigate("/teacher_login/");
     } else {
@@ -41,10 +41,10 @@ const Start = () => {
             type="button"
             className="btn btn-primary"
             onClick={() => {
-              handleLogin("employee");
+              handleLogin("student");
             }}
           >
-            Employee
+            Student
           </button>
         </div>
         <div className="d-flex justify-content-center mt-1 mb-2">
@@ -75,3 +75,5 @@ const Start = () => {
 };
 
 export default Start;
+
+

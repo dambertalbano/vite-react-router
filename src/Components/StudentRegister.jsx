@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const EmployeeRegister = () => {
-  const [employee, setEmployee] = useState({
+const StudentRegister = () => {
+  const [student, setStudent] = useState({
     name: "",
     email: "",
     password: "",
@@ -26,8 +26,8 @@ const EmployeeRegister = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Simulating form submission
-    console.log("Submitted data:", employee);
-    navigate("/employee_login");
+    console.log("Submitted data:", student);
+    navigate("/student_login");
   };
 
   return (
@@ -45,7 +45,7 @@ const EmployeeRegister = () => {
               id="inputName"
               placeholder="Enter Name"
               onChange={(e) =>
-                setEmployee({ ...employee, name: e.target.value })
+                setStudent({ ...student, name: e.target.value })
               }
             />
           </div>
@@ -60,7 +60,7 @@ const EmployeeRegister = () => {
               placeholder="Enter Email"
               autoComplete="off"
               onChange={(e) =>
-                setEmployee({ ...employee, email: e.target.value })
+                setStudent({ ...student, email: e.target.value })
               }
             />
           </div>
@@ -74,7 +74,7 @@ const EmployeeRegister = () => {
               id="inputPassword4"
               placeholder="Enter Password"
               onChange={(e) =>
-                setEmployee({ ...employee, password: e.target.value })
+                setStudent({ ...student, password: e.target.value })
               }
             />
           </div>
@@ -87,7 +87,7 @@ const EmployeeRegister = () => {
               id="category"
               className="form-select"
               onChange={(e) =>
-                setEmployee({ ...employee, category_id: e.target.value })
+                setStudent({ ...student, category_id: e.target.value })
               }
             >
               {category.map((c) => {
@@ -110,4 +110,6 @@ const EmployeeRegister = () => {
   );
 };
 
-export default EmployeeRegister;
+export default StudentRegister;
+
+

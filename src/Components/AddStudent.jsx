@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AddEmployee = () => {
-  const [employee, setEmployee] = useState({
+const AddStudent = () => {
+  const [student, setStudent] = useState({
     name: "",
     email: "",
     password: "",
@@ -17,15 +17,15 @@ const AddEmployee = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate adding employee
-    console.log("Added employee:", employee);
-    navigate("/dashboard/employee");
+    // Simulate adding student
+    console.log("Added student:", student);
+    navigate("/dashboard/student");
   };
 
   return (
     <div className="d-flex justify-content-center align-items-center mt-3">
       <div className="p-3 rounded w-50 border">
-        <h3 className="text-center">Add Employee</h3>
+        <h3 className="text-center">Add Student</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
             <label htmlFor="inputName" className="form-label">
@@ -37,7 +37,7 @@ const AddEmployee = () => {
               id="inputName"
               placeholder="Enter Name"
               onChange={(e) =>
-                setEmployee({ ...employee, name: e.target.value })
+                setStudent({ ...student, name: e.target.value })
               }
             />
           </div>
@@ -52,7 +52,7 @@ const AddEmployee = () => {
               placeholder="Enter Email"
               autoComplete="off"
               onChange={(e) =>
-                setEmployee({ ...employee, email: e.target.value })
+                setStudent({ ...student, email: e.target.value })
               }
             />
           </div>
@@ -66,7 +66,7 @@ const AddEmployee = () => {
               id="inputPassword4"
               placeholder="Enter Password"
               onChange={(e) =>
-                setEmployee({ ...employee, password: e.target.value })
+                setStudent({ ...student, password: e.target.value })
               }
             />
           </div>
@@ -79,7 +79,7 @@ const AddEmployee = () => {
               id="category"
               className="form-select"
               onChange={(e) =>
-                setEmployee({ ...employee, category_id: e.target.value })
+                setStudent({ ...student, category_id: e.target.value })
               }
             >
               {category.map((c) => {
@@ -93,7 +93,7 @@ const AddEmployee = () => {
           </div>
           <div className="col-12">
             <button type="submit" className="btn btn-primary w-100">
-              Add Employee
+              Add Student
             </button>
           </div>
         </form>
@@ -102,4 +102,6 @@ const AddEmployee = () => {
   );
 };
 
-export default AddEmployee;
+export default AddStudent;
+
+

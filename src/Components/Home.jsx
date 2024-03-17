@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const Home = () => {
   const [adminTotal, setAdminTotal] = useState(0);
-  const [employeeTotal, setEmployeeTotal] = useState(0);
+  const [studentTotal, setStudentTotal] = useState(0);
   const [teacherTotal, setTeacherTotal] = useState(0);
   const [admins, setAdmins] = useState([]);
 
@@ -14,11 +14,11 @@ const Home = () => {
       setAdminTotal(mockAdminCount);
     };
 
-    // Simulating fetching employee count
-    const employeeCount = () => {
-      // Mock employee count
-      const mockEmployeeCount = 20;
-      setEmployeeTotal(mockEmployeeCount);
+    // Simulating fetching student count
+    const studentCount = () => {
+      // Mock student count
+      const mockStudentCount = 20;
+      setStudentTotal(mockStudentCount);
     };
 
     // Simulating fetching teacher count
@@ -40,7 +40,7 @@ const Home = () => {
     };
 
     adminCount();
-    employeeCount();
+    studentCount();
     teacherCount();
     adminRecords();
   }, []);
@@ -60,12 +60,12 @@ const Home = () => {
         </div>
         <div className='px-3 pt-2 pb-3 border shadow-sm w-25'>
           <div className='text-center pb-1'>
-            <h4>Employee</h4>
+            <h4>Student</h4>
           </div>
           <hr />
           <div className='d-flex justify-content-between'>
             <h5>Total:</h5>
-            <h5>{employeeTotal}</h5>
+            <h5>{studentTotal}</h5>
           </div>
         </div>
         <div className='px-3 pt-2 pb-3 border shadow-sm w-25'>
@@ -106,3 +106,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

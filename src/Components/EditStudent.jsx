@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const EditEmployee = () => {
+const EditStudent = () => {
     const { id } = useParams()
-    const [employee, setEmployee] = useState({
+    const [student, setStudent] = useState({
         name: "",
         email: "",
         category_id: "",
@@ -16,29 +16,29 @@ const EditEmployee = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        // Simulate fetching employee details
-        const fetchEmployeeDetail = () => {
-            // Simulated employee data
-            const fakeEmployee = { id: 1, name: "John Doe", email: "john@example.com", category_id: 1 };
+        // Simulate fetching student details
+        const fetchStudentDetail = () => {
+            // Simulated student data
+            const fakeStudent = { id: 1, name: "John Doe", email: "john@example.com", category_id: 1 };
             if (id === '1') {
-                setEmployee(fakeEmployee);
+                setStudent(fakeStudent);
             }
         };
 
-        fetchEmployeeDetail();
+        fetchStudentDetail();
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Simulate editing employee
-        console.log("Edited employee:", employee);
-        navigate('/dashboard/employee');
+        // Simulate editing student
+        console.log("Edited student:", student);
+        navigate('/dashboard/student');
     };
 
     return (
         <div className="d-flex justify-content-center align-items-center mt-3">
             <div className="p-3 rounded w-50 border">
-                <h3 className="text-center">Edit Employee</h3>
+                <h3 className="text-center">Edit Student</h3>
                 <form className="row g-1" onSubmit={handleSubmit}>
                     <div className="col-12">
                         <label htmlFor="inputName" className="form-label">
@@ -49,9 +49,9 @@ const EditEmployee = () => {
                             className="form-control rounded-0"
                             id="inputName"
                             placeholder="Enter Name"
-                            value={employee.name}
+                            value={student.name}
                             onChange={(e) =>
-                                setEmployee({ ...employee, name: e.target.value })
+                                setStudent({ ...student, name: e.target.value })
                             }
                         />
                     </div>
@@ -65,9 +65,9 @@ const EditEmployee = () => {
                             id="inputEmail4"
                             placeholder="Enter Email"
                             autoComplete="off"
-                            value={employee.email}
+                            value={student.email}
                             onChange={(e) =>
-                                setEmployee({ ...employee, email: e.target.value })
+                                setStudent({ ...student, email: e.target.value })
                             }
                         />
                     </div>
@@ -79,9 +79,9 @@ const EditEmployee = () => {
                             name="category"
                             id="category"
                             className="form-select"
-                            value={employee.category_id}
+                            value={student.category_id}
                             onChange={(e) =>
-                                setEmployee({ ...employee, category_id: e.target.value })
+                                setStudent({ ...student, category_id: e.target.value })
                             }
                         >
                             {category.map((c) => {
@@ -91,7 +91,7 @@ const EditEmployee = () => {
                     </div>
                     <div className="col-12">
                         <button type="submit" className="btn btn-primary w-100">
-                            Edit Employee
+                            Edit Student
                         </button>
                     </div>
                 </form>
@@ -100,4 +100,6 @@ const EditEmployee = () => {
     );
 };
 
-export default EditEmployee;
+export default EditStudent;
+
+

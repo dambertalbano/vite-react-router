@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
-const EmployeeLogin = () => {
+const StudentLogin = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -22,7 +22,7 @@ const EmployeeLogin = () => {
       values.password === mockUser.password
     ) {
       localStorage.setItem("valid", true);
-      navigate("/employee_detail/1"); // Simulated employee id
+      navigate("/student_detail/1"); // Simulated student id
     } else {
       setError("Invalid email or password");
     }
@@ -66,7 +66,7 @@ const EmployeeLogin = () => {
           </button>
         </form>
         <div className="d-flex justify-content-center mt-1 mb-1">
-          <a href="/employee_register" className="">
+          <a href="/student_register" className="">
             Register as Student
           </a>
         </div>
@@ -75,4 +75,6 @@ const EmployeeLogin = () => {
   );
 };
 
-export default EmployeeLogin;
+export default StudentLogin;
+
+
