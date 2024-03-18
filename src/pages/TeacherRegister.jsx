@@ -33,7 +33,7 @@ const TeacherRegister = () => {
   };
 
   return (
-    <div className="p-5 d-flex justify-content-center align-items-center mt-xl-5">
+    <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
       <div className="p-3 rounded w-50 border">
         <h3 className="text-center addTeacherTitle">Register as Teacher</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
