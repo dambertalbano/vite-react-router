@@ -34,28 +34,28 @@ const TeacherRegister = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
-      <div className="p-3 rounded w-50 border">
-        <h3 className="text-center addTeacherTitle">Register as Teacher</h3>
+      <div className="loginForm">
+        <h3 className="title">Register as Teacher</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
-            <label for="inputName" className="form-label-teacher">
+            <label for="inputName" className="form-label">
               Name
             </label>
             <input
               type="text"
-              className="form-control rounded-3 form-control1"
+              className="form-control rounded-3"
               id="inputName"
               placeholder="Enter Name"
               onChange={(e) => setTeacher({ ...teacher, name: e.target.value })}
             />
           </div>
           <div className="col-12">
-            <label for="inputEmail4" className="form-label-teacher">
+            <label for="inputEmail4" className="form-label">
               Email
             </label>
             <input
               type="email"
-              className="form-control rounded-3 form-control1"
+              className="form-control rounded-3"
               id="inputEmail4"
               placeholder="Enter Email"
               autoComplete="off"
@@ -65,12 +65,12 @@ const TeacherRegister = () => {
             />
           </div>
           <div className="col-12">
-            <label for="inputPassword4" className="form-label-teacher">
+            <label for="inputPassword4" className="form-label">
               Password
             </label>
             <input
               type="password"
-              className="form-control rounded-3 form-control1"
+              className="form-control rounded-3"
               id="inputPassword4"
               placeholder="Enter Password"
               onChange={(e) =>
@@ -79,7 +79,7 @@ const TeacherRegister = () => {
             />
           </div>
           <div className="col-12">
-            <label for="department" className="form-label-teacher">
+            <label for="department" className="form-label">
               Department
             </label>
             <select
@@ -88,15 +88,14 @@ const TeacherRegister = () => {
               className="form-select"
               onChange={(e) =>
                 setTeacher({ ...teacher, department_id: e.target.value })
-              }
-            >
+              }>
               {department.map((c) => {
                 return <option value={c.id}>{c.name}</option>;
               })}
             </select>
           </div>
           <div className="col-12">
-            <button type="submit" className="btn btn-dark w-100 mt-4">
+            <button type="submit" className="btn btn-custom1">
               Register
             </button>
           </div>
