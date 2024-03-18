@@ -33,7 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="adminlogin" element={<Login />} />
-          <Route path="student_login" element={<StudentLogin />} />
+          <Route path="/student_login" element={<StudentLogin />} />
           <Route path="student_detail/:id" element={<StudentDetail />} />
           <Route path="teacher_login" element={<TeacherLogin />} />
           <Route path="teacher_detail/:id" element={<TeacherDetail />} />
@@ -56,3 +56,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Router>
   </React.StrictMode>
 )
+  
