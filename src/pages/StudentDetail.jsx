@@ -11,7 +11,8 @@ const StudentDetail = () => {
         const mockStudent = {
             id: id,
             name: 'John Doe',
-            email: 'john.doe@example.com'
+            email: 'john.doe@example.com',
+            category: 'BSCS'
         };
         setStudent(mockStudent);
     }, [id]);
@@ -31,6 +32,7 @@ const StudentDetail = () => {
                 <div className='d-flex align-items-center flex-column mt-5'>
                     <h3>Name: {student.name}</h3>
                     <h3>Email: {student.email}</h3>
+                    <h3>Category: {student.category}</h3>
                 </div>
                 <div>
                     <button className='btn btn-danger' onClick={handleLogout}>Logout</button>
@@ -41,6 +43,7 @@ const StudentDetail = () => {
 };
 
 export default StudentDetail;
+
 
 
 

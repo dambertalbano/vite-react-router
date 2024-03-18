@@ -11,7 +11,8 @@ const TeacherDetail = () => {
         const mockTeacher = {
             id: id,
             name: 'John Doe',
-            email: 'john.doe@example.com'
+            email: 'john.doe@example.com',
+            category: 'BSCS'
         };
         setTeacher(mockTeacher);
     }, [id]);
@@ -31,6 +32,7 @@ const TeacherDetail = () => {
                 <div className='d-flex align-items-center flex-column mt-5'>
                     <h3>Name: {teacher.name}</h3>
                     <h3>Email: {teacher.email}</h3>
+                    <h3>Category: {teacher.category}</h3>
                 </div>
                 <div>
                     <button className='btn btn-danger' onClick={handleLogout}>Logout</button>

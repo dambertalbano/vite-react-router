@@ -66,7 +66,7 @@ const TeacherLogin = () => {
           </button>
         </form>
         <div className="register">
-          <a href="/teacher_register" className="">
+          <a href="/vite-react-router/teacher_register" className="">
             Don't have an account? Register here.
           </a>
         </div>

@@ -24,7 +24,7 @@ import TeacherDetail from './pages/TeacherDetail';
 import TeacherLogin from './pages/TeacherLogin';
 import TeacherRegister from './pages/TeacherRegister';
 
-const basename = '/vite-react-router';
+const basename = '/vite-react-router/';
 
 ReactDOM.render(
   <React.StrictMode>

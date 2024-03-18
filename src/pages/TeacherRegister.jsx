@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const TeacherRegister = () => {
-  const [Teacher, setTeacher] = useState({
+  const [teacher, setTeacher] = useState({
     name: "",
     email: "",
     password: "",
@@ -13,9 +13,11 @@ const TeacherRegister = () => {
 
   // Simulated department data
   const mockCategories = [
-    { id: 1, name: "Department 1" },
-    { id: 2, name: "Department 2" },
-    { id: 3, name: "Department 3" },
+        { id: 1, name: "BSHM" },
+        { id: 2, name: "BSCS" },
+        { id: 3, name: "BSBA" },
+        { id: 3, name: "BEED" },
+        { id: 3, name: "BSTM" },
   ];
 
   useEffect(() => {
@@ -26,14 +28,14 @@ const TeacherRegister = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Simulating form submission
-    console.log("Submitted data:", Teacher);
+    console.log("Submitted data:", teacher);
     navigate("/teacher_login");
   };
 
   return (
     <div className="d-flex justify-content-center align-items-center mt-3">
       <div className="p-3 rounded w-50 border">
-        <h3 className="text-center">Student Registration</h3>
+        <h3 className="text-center">Teacher Registration</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
             <label htmlFor="inputName" className="form-label">
@@ -45,7 +47,7 @@ const TeacherRegister = () => {
               id="inputName"
               placeholder="Enter Name"
               onChange={(e) =>
-                setTeacher({ ...Teacher, name: e.target.value })
+                setTeacher({ ...teacher, name: e.target.value })
               }
             />
           </div>
@@ -60,7 +62,7 @@ const TeacherRegister = () => {
               placeholder="Enter Email"
               autoComplete="off"
               onChange={(e) =>
-                setTeacher({ ...Teacher, email: e.target.value })
+                setTeacher({ ...teacher, email: e.target.value })
               }
             />
           </div>
@@ -74,7 +76,7 @@ const TeacherRegister = () => {
               id="inputPassword4"
               placeholder="Enter Password"
               onChange={(e) =>
-                setTeacher({ ...Teacher, password: e.target.value })
+                setTeacher({ ...teacher, password: e.target.value })
               }
             />
           </div>
@@ -87,7 +89,7 @@ const TeacherRegister = () => {
               id="department"
               className="form-select"
               onChange={(e) =>
-                setTeacher({ ...Teacher, department_id: e.target.value })
+                setTeacher({ ...teacher, department_id: e.target.value })
               }
             >
               {department.map((c) => {
@@ -111,6 +113,7 @@ const TeacherRegister = () => {
 };
 
 export default TeacherRegister;
+
 
 
 
