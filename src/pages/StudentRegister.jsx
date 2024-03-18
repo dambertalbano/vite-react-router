@@ -33,29 +33,31 @@ const StudentRegister = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center studentForm">
+    <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
       <div className="loginForm">
-        <h3 className="text-center addStudenttitle">Student Registration</h3>
+        <h3 className="text-center">Student Registration</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
-            <label htmlFor="inputName" className="form-label-stud">
+            <label htmlFor="inputName" className="form-label">
               Name
             </label>
             <input
               type="text"
-              className="form-control rounded-3 form-control1"
+              className="form-control rounded-3"
               id="inputName"
               placeholder="Enter Name"
-              onChange={(e) => setStudent({ ...student, name: e.target.value })}
+              onChange={(e) =>
+                setStudent({ ...student, name: e.target.value })
+              }
             />
           </div>
           <div className="col-12">
-            <label htmlFor="inputEmail4" className="form-label-studl">
+            <label htmlFor="inputEmail4" className="form-label">
               Email
             </label>
             <input
               type="email"
-              className="form-control rounded-3 form-control1"
+              className="form-control rounded-3"
               id="inputEmail4"
               placeholder="Enter Email"
               autoComplete="off"
@@ -65,12 +67,12 @@ const StudentRegister = () => {
             />
           </div>
           <div className="col-12">
-            <label htmlFor="inputPassword4" className="form-label-stud">
+            <label htmlFor="inputPassword4" className="form-label">
               Password
             </label>
             <input
               type="password"
-              className="form-control rounded-3 form-control1"
+              className="form-control rounded-3"
               id="inputPassword4"
               placeholder="Enter Password"
               onChange={(e) =>
@@ -100,13 +102,13 @@ const StudentRegister = () => {
             </select>
           </div>
           <div className="col-12">
-            <button type="submit" className="btn btn-dark w-100">
+            <button type="submit" className="btn btn-custom1">
               Add Student
             </button>
           </div>
         </form>
       </div>
-    </div>  
+    </div>
   );
 };
 
