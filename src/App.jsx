@@ -1,66 +1,106 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import "./App.css";
-import AddDepartment from "./Components/AddDepartment";
-import AddStudent from "./Components/AddStudent";
-import AddTeacher from "./Components/AddTeacher";
-import Dashboard from "./Components/Dashboard";
-import Department from "./Components/Department";
-import EditStudent from "./Components/EditStudent";
-import EditTeacher from "./Components/EditTeacher";
-import Home from "./Components/Home";
-import Login from "./Components/Login";
-import Profile from "./Components/Profile";
-import Start from "./Components/Start";
-import Student from "./Components/Student";
-import StudentDetail from "./Components/StudentDetail";
-import StudentLogin from "./Components/StudentLogin";
-import StudentRegister from "./Components/StudentRegister";
-import Teacher from "./Components/Teacher";
-import TeacherDetail from "./Components/TeacherDetail";
-import TeacherLogin from "./Components/TeacherLogin";
-import TeacherRegister from "./Components/TeacherRegister";
+import AddDepartment from "./pages/AddDepartment";
+import AddStudent from "./pages/AddStudent";
+import AddTeacher from "./pages/AddTeacher";
+import Dashboard from "./pages/Dashboard";
+import Department from "./pages/Department";
+import EditStudent from "./pages/EditStudent";
+import EditTeacher from "./pages/EditTeacher";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Start from "./pages/Start";
+import Student from "./pages/Student";
+import StudentDetail from "./pages/StudentDetail";
+import StudentLogin from "./pages/StudentLogin";
+import StudentRegister from "./pages/StudentRegister";
+import Teacher from "./pages/Teacher";
+import TeacherDetail from "./pages/TeacherDetail";
+import TeacherLogin from "./pages/TeacherLogin";
+import TeacherRegister from "./pages/TeacherRegister";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Start />}></Route>
-        <Route path="/adminlogin" element={<Login />}></Route>
-        <Route path="/student_login" element={<StudentLogin />}></Route>
-        <Route path="/student_detail/:id" element={<StudentDetail />}></Route>
-        <Route path="/teacher_login" element={<TeacherLogin />}></Route>
-        <Route path="/teacher_detail/:id" element={<TeacherDetail />}></Route>
-        <Route path="/teacher_register" element={<TeacherRegister />}></Route>
-        <Route path="/student_register" element={<StudentRegister />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="" element={<Home />}></Route>
-          <Route path="/dashboard/student" element={<Student />}></Route>
-          <Route path="/dashboard/teacher" element={<Teacher />}></Route>
-          <Route path="/dashboard/department" element={<Department />}></Route>
-          <Route path="/dashboard/profile" element={<Profile />}></Route>
-          <Route
-            path="/dashboard/add_department"
-            element={<AddDepartment />}
-          ></Route>
-          <Route
-            path="/dashboard/add_student"
-            element={<AddStudent />}
-          ></Route>
-          <Route
-            path="/dashboard/edit_student/:id"
-            element={<EditStudent />}
-          ></Route>
-          <Route path="/dashboard/add_teacher" element={<AddTeacher />}></Route>
-          <Route
-            path="/dashboard/edit_teacher/:id"
-            element={<EditTeacher />}
-          ></Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
+const router = createBrowserRouter ([
+  {
+    path: "/vite-react-router/",
+    element: <Start />,
+    children: [
+      {
+        path: "/vite-react-router/adminlogin",
+        element: <Login />,
+      },
+      {
+        path: "/vite-react-router/student_login",
+        element: <StudentLogin />,
+      },
+      {
+        path: "/vite-react-router/student_detail/:id",
+        element: <StudentDetail />,
+      },
+      {
+        path: "/vite-react-router/teacher_login",
+        element: <TeacherLogin />,
+      },
+      {
+        path: "/vite-react-router/teacher_detail/:id",
+        element: <TeacherDetail />,
+      },
+      {
+        path: "/vite-react-router/teacher_register",
+        element: <TeacherRegister />,
+      },
+      {
+        path: "/vite-react-router/student_register",
+        element: <StudentRegister />,
+      },
+      {
+        path: "/vite-react-router/dashboard",
+        element: <Dashboard />,
+      },
+    ],
+    path:"",
+    element: <Home />,
+    children: [
+      {
+        path: "/vite-react-router/dashboard/student",
+        element: <Student />,
+      },
+      {
+        path: "/vite-react-router/dashboard/teacher",
+        element: <Teacher />,
+      },
+      {
+        path: "/vite-react-router/dashboard/department",
+        element: <Department />,
+      },
+      {
+        path: "/vite-react-router/dashboard/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/vite-react-router/dashboard/add_department",
+        element: <AddDepartment />,
+      },
+      {
+        path: "/vite-react-router/dashboard/add_student",
+        element: <AddStudent />,
+      },
+      {
+        path: "/vite-react-router/dashboard/add_teacher",
+        element: <AddTeacher />,
+      },
+      {
+        path: "/vite-react-router/dashboard/edit_student",
+        element: <EditStudent />,
+      },
+      {
+        path: "/vite-react-router/dashboard/edit_teacher",
+        element: <EditTeacher />,
+      },
+    ]
+  },
+])
 
 export default App;
 
