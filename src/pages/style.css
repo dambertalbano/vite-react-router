@@ -115,6 +115,12 @@ a:visited {
   font-weight: bold;
   text-align: center;
 }
+h4{
+  color: black;
+  font-family: arial black;
+  font-weight: bold;
+  text-align: center;
+}
 
 .form-label {
   font-family: arial;
