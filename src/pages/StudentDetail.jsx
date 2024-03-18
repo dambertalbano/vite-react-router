@@ -34,8 +34,8 @@ const StudentDetail = () => {
         <h4 className="deetzTitle">SCC Attendance Management System</h4>
       </div>
       <div className="d-flex justify-content-center align-items-center h-65 mt-xl-5">
-        <div className="p-3 d-flex justify-content-center shadow bg-light p-2 text-black bg-opacity-75 detail">
-          <div className="d-flex align-items-center flex-column mt-5">
+        <div className="p-5 pb-5 rounded w-50 h-50 border bg-light p-2 text-black bg-opacity-75 detail">
+          <div className="d-flex align-items-center flex-column mt-2">
             <h3>
               <span className="bold-label">Name:</span> {student.name}
             </h3>
@@ -54,7 +54,6 @@ const StudentDetail = () => {
               Logout
             </button>
           </div>
-          <div></div>
         </div>
       </div>
     </div>
