@@ -28,7 +28,7 @@ const Dashboard = () => {
             >
               <li className="w-100">
                 <Link
-                  to="*"
+                  to=""
                   className="nav-link text-white px-0 align-middle"
                 >
                   <i className="fs-4 bi-speedometer2 ms-2"></i>

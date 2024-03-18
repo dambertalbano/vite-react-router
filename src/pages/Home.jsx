@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+
 const Home = () => {
   const [adminTotal, setAdminTotal] = useState(0);
   const [studentTotal, setStudentTotal] = useState(0);

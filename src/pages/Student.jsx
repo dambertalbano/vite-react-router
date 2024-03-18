@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+
 const Student = () => {
   const [student, setStudent] = useState([
     { id: 1, name: "John Doe", email: "john.doe@example.com" },

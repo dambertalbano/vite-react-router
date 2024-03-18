@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
 
 const AdminLogin = () => {
   const [values, setValues] = useState({
@@ -22,7 +21,7 @@ const AdminLogin = () => {
       values.password === mockUser.password
     ) {
       localStorage.setItem("valid", true);
-      navigate('/Dashboard'); // Simulated admin id
+      navigate('/dashboard'); // Simulated admin id
     } else {
       setError("Invalid email or password");
     }

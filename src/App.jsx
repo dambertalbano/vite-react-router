@@ -39,6 +39,7 @@ ReactDOM.render(
         <Route path="/teacher_register" element={<TeacherRegister />} />
         <Route path="/student_register" element={<StudentRegister />} />
         <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="" element={<Home />} />
           <Route path="student" element={<Student />} />
           <Route path="teacher" element={<Teacher />} />
           <Route path="department" element={<Department />} />
@@ -49,7 +50,6 @@ ReactDOM.render(
           <Route path="edit_student" element={<EditStudent />} />
           <Route path="edit_teacher" element={<EditTeacher />} />
         </Route>
-        <Route path="*" element={<Home />} />
       </Routes>
     </Router>
   </React.StrictMode>,

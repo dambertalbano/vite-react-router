@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const StudentRegister = () => {
   const [student, setStudent] = useState({
     name: "",
@@ -102,8 +103,8 @@ const StudentRegister = () => {
             </select>
           </div>
           <div className="col-12">
-            <button type="submit" className="btn btn-primary w-100">            
-            Add Student                 
+            <button type="submit" className="btn btn-primary w-100">
+            Add Student
             </button>
           </div>
         </form>
