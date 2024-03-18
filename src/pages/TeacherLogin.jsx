@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
 const TeacherLogin = () => {
@@ -32,7 +32,7 @@ const TeacherLogin = () => {
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
       <div className="loginForm">
         <div className="text-warning">{error && error}</div>
-        <h2 className='loginpage'>Log In</h2>
+        <h2 className="loginpage">Log In</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email">
@@ -61,14 +61,10 @@ const TeacherLogin = () => {
               className="form-control rounded-3"
             />
           </div>
-          <button className="btn btn-custom">
-            Log in
-          </button>
+          <button className="btn btn-custom">Log in</button>
         </form>
         <div className="register">
-          <a href="/vite-react-router/teacher_register" className="">
-            Don't have an account? Register here.
-          </a>
+          <Link to="/teacher_register">Don't have an account? Register here.</Link>
         </div>
       </div>
     </div>
@@ -76,5 +72,3 @@ const TeacherLogin = () => {
 };
 
 export default TeacherLogin;
-
-

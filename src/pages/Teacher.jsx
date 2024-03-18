@@ -14,10 +14,10 @@ const Teacher = () => {
 
   return (
     <div className="px-5 mt-3">
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center addtchr">
         <h3>Teacher List</h3>
       </div>
-      <Link to="/dashboard/add_teacher" className="btn btn-success">
+      <Link to="/dashboard/add_teacher" className="btn btn-custom3">
         Add Teacher
       </Link>
       <div className="mt-3">
@@ -30,20 +30,20 @@ const Teacher = () => {
             </tr>
           </thead>
           <tbody>
-            {teacher.map((t) => (
-              <tr key={t.id}>
-                <td>{t.name}</td>
-                <td>{t.email}</td>
+            {teacher.map((e) => (
+              <tr>
+                <td>{e.name}</td>
+                <td>{e.email}</td>
                 <td>
                   <Link
-                    to={`/dashboard/edit_teacher/${t.id}`}
-                    className="btn btn-info btn-sm me-2"
+                    to={`/dashboard/edit_teacher/` + e.id}
+                    className="btn btn-custom4 btn-sm me-2"
                   >
                     Edit
                   </Link>
                   <button
-                    className="btn btn-warning btn-sm"
-                    onClick={() => handleDelete(t.id)}
+                    className="btn btn-custom5 btn-sm"
+                    onClick={() => handleDelete(e.id)}
                   >
                     Delete
                   </button>

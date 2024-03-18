@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-
 const Student = () => {
   const [student, setStudent] = useState([
     { id: 1, name: "John Doe", email: "john.doe@example.com" },
@@ -16,9 +15,9 @@ const Student = () => {
   return (
     <div className="px-5 mt-3">
       <div className="d-flex justify-content-center">
-        <h3>Student List</h3>
+        <h3 className="addstud">Student List</h3>
       </div>
-      <Link to="/dashboard/add_student" className="btn btn-success">
+      <Link to="/dashboard/add_student" className="btn btn-custom3">
         Add Student
       </Link>
       <div className="mt-3">
@@ -31,20 +30,20 @@ const Student = () => {
             </tr>
           </thead>
           <tbody>
-            {student.map((t) => (
-              <tr key={t.id}>
-                <td>{t.name}</td>
-                <td>{t.email}</td>
+            {student.map((e) => (
+              <tr>
+                <td>{e.name}</td>
+                <td>{e.email}</td>
                 <td>
                   <Link
-                    to={`/dashboard/edit_student/${t.id}`}
-                    className="btn btn-info btn-sm me-2"
+                    to={`/dashboard/edit_student/` + e.id}
+                    className="btn btn-custom4 btn-sm me-2"
                   >
                     Edit
                   </Link>
                   <button
-                    className="btn btn-warning btn-sm"
-                    onClick={() => handleDelete(t.id)}
+                    className="btn btn-custom5 btn-sm"
+                    onClick={() => handleDelete(e.id)}
                   >
                     Delete
                   </button>
@@ -59,5 +58,3 @@ const Student = () => {
 };
 
 export default Student;
-
-

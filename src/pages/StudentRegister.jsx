@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const StudentRegister = () => {
   const [student, setStudent] = useState({
     name: "",
@@ -14,11 +13,11 @@ const StudentRegister = () => {
 
   // Simulated department data
   const mockCategories = [
-        { id: 1, name: "BSHM" },
-        { id: 2, name: "BSCS" },
-        { id: 3, name: "BSBA" },
-        { id: 3, name: "BEED" },
-        { id: 3, name: "BSTM" },
+    { id: 1, name: "BSHM" },
+    { id: 2, name: "BSCS" },
+    { id: 3, name: "BSBA" },
+    { id: 3, name: "BEED" },
+    { id: 3, name: "BSTM" },
   ];
 
   useEffect(() => {
@@ -34,31 +33,29 @@ const StudentRegister = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center mt-3">
+    <div className="d-flex justify-content-center align-items-center studentForm">
       <div className="p-3 rounded w-50 border">
-        <h3 className="text-center">Student Registration</h3>
+        <h3 className="text-center addStudenttitle">Student Registration</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
-            <label htmlFor="inputName" className="form-label">
+            <label htmlFor="inputName" className="form-label-stud">
               Name
             </label>
             <input
               type="text"
-              className="form-control rounded-0"
+              className="form-control rounded-3 form-control1"
               id="inputName"
               placeholder="Enter Name"
-              onChange={(e) =>
-                setStudent({ ...student, name: e.target.value })
-              }
+              onChange={(e) => setStudent({ ...student, name: e.target.value })}
             />
           </div>
           <div className="col-12">
-            <label htmlFor="inputEmail4" className="form-label">
+            <label htmlFor="inputEmail4" className="form-label-studl">
               Email
             </label>
             <input
               type="email"
-              className="form-control rounded-0"
+              className="form-control rounded-3 form-control1"
               id="inputEmail4"
               placeholder="Enter Email"
               autoComplete="off"
@@ -68,12 +65,12 @@ const StudentRegister = () => {
             />
           </div>
           <div className="col-12">
-            <label htmlFor="inputPassword4" className="form-label">
+            <label htmlFor="inputPassword4" className="form-label-stud">
               Password
             </label>
             <input
               type="password"
-              className="form-control rounded-0"
+              className="form-control rounded-3 form-control1"
               id="inputPassword4"
               placeholder="Enter Password"
               onChange={(e) =>
@@ -103,8 +100,8 @@ const StudentRegister = () => {
             </select>
           </div>
           <div className="col-12">
-            <button type="submit" className="btn btn-primary w-100">
-            Add Student
+            <button type="submit" className="btn btn-dark w-100">
+              Add Student
             </button>
           </div>
         </form>
@@ -114,6 +111,3 @@ const StudentRegister = () => {
 };
 
 export default StudentRegister;
-
-
-

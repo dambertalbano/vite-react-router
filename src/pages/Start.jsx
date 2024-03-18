@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import './style.css';
+import "./style.css";
 
 const Start = () => {
   const navigate = useNavigate();
@@ -20,12 +20,12 @@ const Start = () => {
       }, 1000); // Simulate server delay
     });
   };
-  
+
   const handleLogin = (role) => {
     if (role === "admin") {
       navigate("admin_login");
     } else if (role === "student") {
-      navigate("student_login" );
+      navigate("student_login");
     } else if (role === "teacher") {
       navigate("teacher_login");
     } else {
@@ -35,46 +35,45 @@ const Start = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
-      <div className="p-3 rounded w-25 border loginForm">
-        <h2 className="text-center">Login As</h2>
-        <div className="d-flex justify-content-center mt-1 mb-3">
+      <div className="loginForm">
+        <h2 className="text-center">Sign In as</h2>
+        <div className="d-flex justify-content-center mt-1 mb-1">
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-custom"
             onClick={() => {
-              handleLogin("student");
-            }}
-          >
-            Student
-          </button>
-        </div>
-        <div className="d-flex justify-content-center mt-1 mb-2">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => {
-              handleLogin("teacher");
+              navigate("/teacher_login");
             }}
           >
             Teacher
           </button>
         </div>
-        <div className="d-flex justify-content-center mt-1 mb-1">
+        <div className="d-flex justify-content-center mt-1 mb-3">
           <button
             type="button"
-            className="btn btn-success"
+            className="btn btn-custom"
             onClick={() => {
-              handleLogin("admin");
+              navigate("/student_login");
+            }}
+          >
+            Student
+          </button>
+        </div>
+        <div className="d-flex justify-content-center mt-3 mb-2">
+          <button
+            type="button"
+            className="btn btn-custom"
+            onClick={() => {
+              navigate("/admin_login");
             }}
           >
             Admin
           </button>
         </div>
+        <div></div>
       </div>
     </div>
   );
 };
 
 export default Start;
-
-

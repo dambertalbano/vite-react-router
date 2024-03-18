@@ -21,7 +21,7 @@ const AdminLogin = () => {
       values.password === mockUser.password
     ) {
       localStorage.setItem("valid", true);
-      navigate('/dashboard'); // Simulated admin id
+      navigate("/dashboard"); // Simulated admin id
     } else {
       setError("Invalid email or password");
     }
@@ -31,7 +31,7 @@ const AdminLogin = () => {
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
       <div className="loginForm">
         <div className="text-warning">{error && error}</div>
-        <h2 className='loginpage'>Log In</h2>
+        <h2 className="loginpage">Log In</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email">
@@ -60,9 +60,7 @@ const AdminLogin = () => {
               className="form-control rounded-3"
             />
           </div>
-          <button className="btn btn-custom">
-            Log in
-          </button>
+          <button className="btn btn-custom">Log in</button>
         </form>
       </div>
     </div>
@@ -70,7 +68,3 @@ const AdminLogin = () => {
 };
 
 export default AdminLogin;
-
-
-
-
