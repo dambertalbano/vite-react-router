@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Student = () => {
-  // Sample student data (replace with your actual data)
-  const [student] = useState([
-    { id: 1, name: "John Doe", email: "test@example.com" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com" },
-    // Add more students as needed
+  const [student, setStudent] = useState([
+    { id: 1, name: "John Doe", email: "john.doe@example.com" },
+    { id: 2, name: "Jane Smith", email: "jane.smith@example.com" },
+    { id: 3, name: "Bob Johnson", email: "bob.johnson@example.com" },
   ]);
 
   const handleDelete = (id) => {
-    // Implement delete functionality as needed
-    console.log("Delete student with id:", id);
+    setStudent((prevStudent) => prevStudent.filter((t) => t.id !== id));
   };
 
   return (
@@ -32,20 +30,20 @@ const Student = () => {
             </tr>
           </thead>
           <tbody>
-            {student.map((e) => (
-              <tr key={e.id}>
-                <td>{e.name}</td>
-                <td>{e.email}</td>
+            {student.map((t) => (
+              <tr key={t.id}>
+                <td>{t.name}</td>
+                <td>{t.email}</td>
                 <td>
                   <Link
-                    to={`/dashboard/edit_student/` + e.id}
+                    to={`/dashboard/edit_student/${t.id}`}
                     className="btn btn-info btn-sm me-2"
                   >
                     Edit
                   </Link>
                   <button
                     className="btn btn-warning btn-sm"
-                    onClick={() => handleDelete(e.id)}
+                    onClick={() => handleDelete(t.id)}
                   >
                     Delete
                   </button>
@@ -60,6 +58,5 @@ const Student = () => {
 };
 
 export default Student;
-
 
 
