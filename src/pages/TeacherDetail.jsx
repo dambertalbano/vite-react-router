@@ -30,11 +30,11 @@ const TeacherDetail = () => {
 
   return (
     <div className="vh-100 detailPage">
-      <div className="p-3 d-flex justify-content-center shadow ">
+      <div className="p-3 d-flex justify-content-center shadow bg-dark p-2 text-white bg-opacity-50">
         <h4 className="deetzTitle">SCC Attendance Management System</h4>
       </div>
       <div className="d-flex justify-content-center align-items-center h-65 mt-xl-5">
-        <div className="p-5 pb-5 rounded w-50 h-50 border detail">
+        <div className="p-5 pb-5 rounded w-50 h-50 border bg-dark p-2 text-white bg-opacity-50 detail">
           <div className="d-flex align-items-center flex-column mt-2">
             <h3>
               <span className="bold-label">Name:</span> {teacher.name}
