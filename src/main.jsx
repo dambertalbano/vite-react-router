@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter } from "react-router-dom";
+import App from "./App";
 import "./App.css";
 import './index.css';
 import AddDepartment from "./pages/AddDepartment";
@@ -14,7 +15,6 @@ import EditTeacher from "./pages/EditTeacher";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import Start from "./pages/Start";
 import Student from "./pages/Student";
 import StudentDetail from "./pages/StudentDetail";
 import StudentLogin from "./pages/StudentLogin";
@@ -27,7 +27,7 @@ import TeacherRegister from "./pages/TeacherRegister";
 const router = createBrowserRouter ([
   {
     path: "/vite-react-router/",
-    element: <Start />,
+    element: <App />,
     children: [
       {
         path: "/vite-react-router/adminlogin",
