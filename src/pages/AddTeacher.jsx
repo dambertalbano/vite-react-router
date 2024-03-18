@@ -19,8 +19,8 @@ const AddTeacher = () => {
         { id: 1, name: "BSHM" },
         { id: 2, name: "BSCS" },
         { id: 3, name: "BSBA" },
-        { id: 3, name: "BEED" },
-        { id: 3, name: "BSTM" },
+        { id: 4, name: "BEED" },
+        { id: 5, name: "BSTM" },
       ];
       setDepartment(mockDepartment);
     };

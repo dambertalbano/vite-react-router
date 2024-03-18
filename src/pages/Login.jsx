@@ -65,11 +65,6 @@ const AdminLogin = () => {
             Log in
           </button>
         </form>
-        <div className="register">
-          <a href="/admin_register" className="">
-            Don't have an account? Register here.
-          </a>
-        </div>
       </div>
     </div>
   );

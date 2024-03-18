@@ -9,9 +9,11 @@ const AddStudent = () => {
     department_id: "",
   });
   const [department] = useState([
-    { id: 1, name: "Department 1" },
-    { id: 2, name: "Department 2" },
-    { id: 3, name: "Department 3" },
+    { id: 1, name: "BSHM" },
+    { id: 2, name: "BSCS" },
+    { id: 3, name: "BSBA" },
+    { id: 4, name: "BEED" },
+    { id: 5, name: "BSTM" },
   ]);
   const navigate = useNavigate();
 
