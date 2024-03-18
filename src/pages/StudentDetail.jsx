@@ -29,7 +29,7 @@ const StudentDetail = () => {
   };
 
   return (
-    <div>
+    <div className="vh-100 detailPage>
       <div className="p-3 d-flex justify-content-center shadow">
         <h4 className="deetzTitle">SCC Attendance Management System</h4>
       </div>
