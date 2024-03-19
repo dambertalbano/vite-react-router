@@ -434,10 +434,6 @@ background-color: #bebebe;
   background-color: white;
 }
 
-.mt-xl-5 {
-  margin-top: ($spacer * .50) !important;
-}
-
 .bold-label {
   font-weight: bold;
   margin-right: 10px;
@@ -455,10 +451,6 @@ background-color: #bebebe;
 
 .detailPage {
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.mt-xl-5 {
-  margin-top: ($spacer * .50) !important;
 }
 
 .bold-label {
