@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Teacher = () => {
   const [teacher, setTeacher] = useState([
-    { id: 1, name: "John Doe", email: "john.doe@example.com" },
-    { id: 2, name: "Jane Smith", email: "jane.smith@example.com" },
-    { id: 3, name: "Bob Johnson", email: "bob.johnson@example.com" },
+    { id: 1, name: "Chester Muñez", email: "chester.muñez@example.com" },
+    { id: 2, name: "Moana Bautista", email: "moana.bautista@example.com" },
+    { id: 3, name: "John Emmanuel Reyes", email: "reyes.johnemmanuel@example.com" },
   ]);
 
   const handleDelete = (id) => {
