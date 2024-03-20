@@ -32,9 +32,9 @@ const Home = () => {
     const adminRecords = () => {
       // Mock admin records
       const mockAdmins = [
-        { id: 1, email: "baguan.rhodalyn@example.com" },
-        { id: 2, email: "albano.dambert@example.com" },
-        { id: 3, email: "jesus@example.com" },
+        { id: 1, email: "admin1@example.com" },
+        { id: 2, email: "admin2@example.com" },
+        { id: 3, email: "admin3@example.com" },
       ];
       setAdmins(mockAdmins);
     };
