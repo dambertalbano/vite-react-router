@@ -331,7 +331,9 @@ background-color: #bebebe;
   font-weight: 500;
   color: rgb(0, 0, 0);
 }
-
+.bold-label{
+  align-items: first baseline;
+}
 .btn-custom4 {
   background-color: rgb(192, 192, 192);
   border-color: none;

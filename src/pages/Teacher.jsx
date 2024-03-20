@@ -5,7 +5,7 @@ const Teacher = () => {
   const [teacher, setTeacher] = useState([
     { id: 1, name: "Chester Muñez", email: "chester.muñez@example.com" },
     { id: 2, name: "Moana Bautista", email: "moana.bautista@example.com" },
-    { id: 3, name: "John Emmanuel Reyes", email: "reyes.johnemmanuel@example.com" },
+    { id: 3, name: "Emmanuel Reyes", email: "reyes.johnemmanuel@example.com" },
   ]);
 
   const handleDelete = (id) => {

@@ -10,8 +10,8 @@ const TeacherDetail = () => {
     // Simulated data instead of Axios call
     const mockTeacher = {
       id: id,
-      name: "John Doe",
-      email: "john.doe@gmail.com",
+      name: "Yasuo Ionia",
+      email: "yasuo.ionia@gmail.com",
       department: "BSCS",
     };
     setTeacher(mockTeacher);
@@ -29,13 +29,13 @@ const TeacherDetail = () => {
   };
 
   return (
-    <div className="vh-100 detailPage">
+    <div className="vh-100 vw-100 detailPage">
       <div className="p-3 d-flex justify-content-center shadow bg-light p-2 text-black bg-opacity-75">
         <h4 className="deetzTitle">SCC Attendance Management System</h4>
       </div>
-      <div className="d-flex justify-content-center align-items-center h-65 mt-xl-5">
-        <div className="p-5 pb-5 rounded w-50 h-50 border bg-light p-2 text-black bg-opacity-75 detail">
-          <div className="d-flex align-items-center flex-column mt-2">
+      <div className="d-flex justify-content-center align-items-center h-10 mt-xl-1">
+        <div className="p-1 pb-1 rounded w-50 h-25 border bg-light p-2 text-black bg-opacity-75 detail">
+          <div className="d-flex align-items-flex-center flex-column mt-2">
             <h3>
               <span className="bold-label">Name:</span> {teacher.name}
             </h3>
