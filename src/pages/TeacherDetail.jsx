@@ -34,8 +34,8 @@ const TeacherDetail = () => {
         <h4 className="deetzTitle">SCC Attendance Management System</h4>
       </div>
       <div className="d-flex justify-content-center align-items-center h-10 mt-xl-1">
-        <div className="p-1 pb-1 rounded w-50 h-25 border bg-light p-2 text-black bg-opacity-75 detail">
-          <div className="d-flex align-items-flex-center flex-column mt-2">
+        <div className="p-1 pb-1 rounded w-75 h-25 border bg-light p-2 text-black bg-opacity-75 detail">
+          <div className="d-flex align-items-flex-center flex-column mt-2 detailText">
             <h3>
               <span className="bold-label">Name:</span> {teacher.name}
             </h3>
