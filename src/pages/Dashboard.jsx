@@ -1,15 +1,20 @@
+import axios from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
+  axios.defaults.withCredentials = true
   const handleLogout = () => {
-    localStorage.removeItem("valid");
-    navigate("/");
-  };
-
+    axios.get('http://localhost:3000/auth/logout')
+    .then(result => {
+      if(result.data.Status) { 
+        localStorage.removeItem("valid")
+        navigate('/')
+      } 
+    })
+  }
   return (
     <div className="container-fluid vh-100 detailPage">
       <div className="row flex-nowrap">
@@ -84,3 +89,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

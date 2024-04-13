@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const StudentDetail = () => {
-  const [student, setStudent] = useState({});
-  const { id } = useParams();
-  const navigate = useNavigate();
-
+  const [student, setStudent] = useState([])
+  const {id} = useParams()
+  const navigate = useNavigate()
   useEffect(() => {
-    // Simulated data instead of Axios call
-    const mockStudent = {
-      id: id,
-      name: "Garen Demacia",
-      email: "garen.demacia@gmail.com",
-      department: "BSCS",
-    };
-    setStudent(mockStudent);
-  }, [id]);
-
-  const getStatus = () => {
-    // Check if student is logged in
-    return student.loggedIn ? "Inactive" : "Active";
-  };
-
+      axios.get('http://localhost:3000/student/detail/'+id)
+      .then(result => {
+          setStudent(result.data[0])
+      })
+      .catch(err => console.log(err))
+  }, [])
   const handleLogout = () => {
-    // Simulated logout action
-    localStorage.removeItem("valid");
-    navigate("/");
-  };
-
+      axios.get('http://localhost:3000/student/logout')
+      .then(result => {
+        if(result.data.Status) {
+          localStorage.removeItem("valid")
+          navigate('/')
+        }
+      }).catch(err => console.log(err))
+    }
+    
   return (
     <div className="vh-100 vw-100 detailPage">
       <div className="p-3 d-flex justify-content-center shadow bg-light p-2 text-black bg-opacity-75">
@@ -44,10 +39,10 @@ const StudentDetail = () => {
             </h3>
             <h3>
               <span className="bold-label">Department:</span>{" "}
-              {student.department}
+              {student.department_id}
             </h3>
             <h3>
-              <span className="bold-label">Status:</span> {getStatus()}
+              <span className="bold-label">Status:</span> 
             </h3>
 
             <button className="btn btn-dark mt-xl-5" onClick={handleLogout}>

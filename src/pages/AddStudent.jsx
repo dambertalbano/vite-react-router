@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,50 +7,45 @@ const AddStudent = () => {
     name: "",
     email: "",
     password: "",
+    salary: "",
+    address: "",
     department_id: "",
+    image: "",
   });
   const [department, setDepartment] = useState([]);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
-    // Simulate fetching department data
-    const fetchDepartment = () => {
-      // Mock department data
-      const mockDepartment = [
-        { id: 1, name: "BSHM" },
-        { id: 2, name: "BSCS" },
-        { id: 3, name: "BSBA" },
-        { id: 4, name: "BEED" },
-        { id: 5, name: "BSTM" },
-      ];
-      setDepartment(mockDepartment);
-    };
-
-    fetchDepartment();
+    axios
+      .get("http://localhost:3000/auth/department")
+      .then((result) => {
+        if (result.data.Status) {
+          setDepartment(result.data.Result);
+        } else {
+          alert(result.data.Error);
+        }
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append('name', student.name);
+    formData.append('email', student.email);
+    formData.append('password', student.password);
+    formData.append('department_id', student.department_id);
 
-    // Simulate adding student without making HTTP request
-    const fakeAddStudent = () => {
-      // Check if all fields are filled
-      if (
-        student.name.trim() !== "" &&
-        student.email.trim() !== "" &&
-        student.password.trim() !== "" &&
-        student.department_id.trim() !== ""
-      ) {
-        // Simulate success by navigating to student page
-        navigate("/dashboard/student");
-      } else {
-        // Simulate error by showing an alert
-        alert("Please fill all fields");
-      }
-    };
-
-    fakeAddStudent();
-  };
+    axios.post('http://localhost:3000/auth/add_student', formData)
+    .then(result => {
+        if(result.data.Status) {
+            navigate('/dashboard/student')
+        } else {
+            alert(result.data.Error)
+        }
+    })
+    .catch(err => console.log(err))
+  }
 
   return (
     <div className="d-flex justify-content-center align-items-center studentForm">
@@ -128,3 +124,6 @@ const AddStudent = () => {
 };
 
 export default AddStudent;
+
+
+

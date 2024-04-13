@@ -1,37 +1,32 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+useEffect;
 
 const Start = () => {
   const navigate = useNavigate();
-
-  // Simulated response data
-  const mockUserData = {
-    Status: true,
-    role: "admin", // Change this to test different roles
-    id: "1", // Change this id for different users
-  };
-
-  // Simulating the server request
-  const simulateServerRequest = () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(mockUserData);
-      }, 1000); // Simulate server delay
-    });
-  };
-
-  const handleLogin = (role) => {
-    if (role === "admin") {
-      navigate("admin_login");
-    } else if (role === "student") {
-      navigate("student_login");
-    } else if (role === "teacher") {
-      navigate("teacher_login");
-    } else {
-      // Handle other roles or unexpected data
-    }
-  };
+  axios.defaults.withCredentials = true;
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/verify")
+      .then((result) => {
+        if (result.data.Status) {
+          if (result.data.role === "admin") {
+            navigate("/dashboard");
+          } else if (result.data.role === "student") {
+            navigate("/student_detail/" + result.data.id);
+          } else if (result.data.role === "teacher") {
+            navigate("/teacher_detail/" + result.data.id);
+          } else {
+            // Handle other roles or unexpected data
+          }
+        } else {
+          // Handle case where Status is falsy
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">

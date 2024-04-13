@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,55 +10,47 @@ const AddTeacher = () => {
     department_id: "",
   });
   const [department, setDepartment] = useState([]);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
-    // Simulate fetching department data
-    const fetchDepartment = () => {
-      // Mock department data
-      const mockDepartment = [
-        { id: 1, name: "BSHM" },
-        { id: 2, name: "BSCS" },
-        { id: 3, name: "BSBA" },
-        { id: 4, name: "BEED" },
-        { id: 5, name: "BSTM" },
-      ];
-      setDepartment(mockDepartment);
-    };
-
-    fetchDepartment();
+    axios
+      .get("http://localhost:3000/auth/department")
+      .then((result) => {
+        if (result.data.Status) {
+          setDepartment(result.data.Result);
+        } else {
+          alert(result.data.Error);
+        }
+      })
+      .catch((err) => console.log(err));
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (a) => {
+    a.preventDefault()
+    const formData = new FormData();
+    formData.append('name', teacher.name);
+    formData.append('email', teacher.email);
+    formData.append('password', teacher.password);
+    formData.append('department_id', teacher.department_id);
 
-    // Simulate adding teacher without making HTTP request
-    const fakeAddTeacher = () => {
-      // Check if all fields are filled
-      if (
-        teacher.name.trim() !== "" &&
-        teacher.email.trim() !== "" &&
-        teacher.password.trim() !== "" &&
-        teacher.department_id.trim() !== ""
-      ) {
-        // Simulate success by navigating to teacher page
-        navigate("/dashboard/teacher");
-      } else {
-        // Simulate error by showing an alert
-        alert("Please fill all fields");
-      }
-    };
-
-    fakeAddTeacher();
-  };
+    axios.post('http://localhost:3000/auth/add_teacher', formData)
+    .then(result => {
+        if(result.data.Status) {
+            navigate('/dashboard/teacher')
+        } else {
+            alert(result.data.Error)
+        }
+    })
+    .catch(err => console.log(err))
+  }
 
   return (
-    <div className="p-5 d-flex justify-content-center align-items-center mt-3">
+    <div className="d-flex justify-content-center align-items-center teacherForm">
       <div className="p-3 rounded w-50 border">
-        <h3 className="text-center addTeacherTitle">Add Teacher</h3>
+        <h3 className="text-center addTeachertitle">Add Teacher</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
-            <label htmlFor="inputName" className="form-label-teacher">
+            <label htmlFor="inputName" className="form-label-stud">
               Name
             </label>
             <input
@@ -65,12 +58,11 @@ const AddTeacher = () => {
               className="form-control rounded-3 form-control1"
               id="inputName"
               placeholder="Enter Name"
-              value={teacher.name}
-              onChange={(e) => setTeacher({ ...teacher, name: e.target.value })}
+              onChange={(a) => setTeacher({ ...teacher, name: a.target.value })}
             />
           </div>
           <div className="col-12">
-            <label htmlFor="inputEmail4" className="form-label-teacher">
+            <label htmlFor="inputEmail4" className="form-label-stud">
               Email
             </label>
             <input
@@ -79,14 +71,11 @@ const AddTeacher = () => {
               id="inputEmail4"
               placeholder="Enter Email"
               autoComplete="off"
-              value={teacher.email}
-              onChange={(e) =>
-                setTeacher({ ...teacher, email: e.target.value })
-              }
+              onChange={(a) => setTeacher({ ...teacher, email: a.target.value })}
             />
           </div>
           <div className="col-12">
-            <label htmlFor="inputPassword4" className="form-label-teacher">
+            <label htmlFor="inputPassword4" className="form-label-stud">
               Password
             </label>
             <input
@@ -94,31 +83,30 @@ const AddTeacher = () => {
               className="form-control rounded-3 form-control1"
               id="inputPassword4"
               placeholder="Enter Password"
-              value={teacher.password}
-              onChange={(e) =>
-                setTeacher({ ...teacher, password: e.target.value })
+              onChange={(a) =>
+                setTeacher({ ...teacher, password: a.target.value })
               }
             />
           </div>
           <div className="col-12">
-            <label htmlFor="department" className="form-label-teacher">
+            <label htmlFor="department" className="form-label-stud">
               Department
             </label>
             <select
               name="department"
               id="department"
               className="form-select"
-              value={teacher.department_id}
-              onChange={(e) =>
-                setTeacher({ ...teacher, department_id: e.target.value })
+              onChange={(a) =>
+                setTeacher({ ...teacher, department_id: a.target.value })
               }
             >
-              <option value="">Select Department</option>
-              {department.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
+              {department.map((c) => {
+                return (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="col-12">
@@ -133,3 +121,7 @@ const AddTeacher = () => {
 };
 
 export default AddTeacher;
+
+
+
+

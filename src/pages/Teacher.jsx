@@ -1,23 +1,39 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Teacher = () => {
-  const [teacher, setTeacher] = useState([
-    { id: 1, name: "Chester Muñez", email: "chester.muñez@example.com" },
-    { id: 2, name: "Moana Bautista", email: "moana.bautista@example.com" },
-    { id: 3, name: "Emmanuel Reyes", email: "reyes.johnemmanuel@example.com" },
-  ]);
+  const [teacher, setTeacher] = useState([]);
+  const navigate = useNavigate()
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/auth/teacher")
+      .then((result) => {
+        if (result.data.Status) {
+          setTeacher(result.data.Result);
+        } else {
+          alert(result.data.Error);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const handleDelete = (id) => {
-    setTeacher((prevTeacher) => prevTeacher.filter((t) => t.id !== id));
-  };
-
+    axios.delete('http://localhost:3000/auth/delete_teacher/'+id)
+    .then(result => {
+        if(result.data.Status) {
+            window.location.reload()
+        } else {
+            alert(result.data.Error)
+        }
+    })
+  } 
   return (
     <div className="px-5 mt-3">
-      <div className="d-flex justify-content-center addtchr">
+      <div className="d-flex justify-content-center">
         <h3>Teacher List</h3>
       </div>
-      <Link to="/dashboard/add_teacher" className="btn btn-custom3">
+      <Link to="/dashboard/add_teacher" className="btn btn-success">
         Add Teacher
       </Link>
       <div className="mt-3">
@@ -30,20 +46,20 @@ const Teacher = () => {
             </tr>
           </thead>
           <tbody>
-            {teacher.map((e) => (
+            {teacher.map((a) => (
               <tr>
-                <td>{e.name}</td>
-                <td>{e.email}</td>
+                <td>{a.name}</td>
+                <td>{a.email}</td>
                 <td>
                   <Link
-                    to={`/dashboard/edit_teacher/` + e.id}
-                    className="btn btn-custom4 btn-sm me-2"
+                    to={`/dashboard/edit_teacher/` + a.id}
+                    className="btn btn-info btn-sm me-2"
                   >
                     Edit
                   </Link>
                   <button
-                    className="btn btn-custom5 btn-sm"
-                    onClick={() => handleDelete(e.id)}
+                    className="btn btn-warning btn-sm"
+                    onClick={() => handleDelete(a.id)}
                   >
                     Delete
                   </button>
@@ -58,3 +74,6 @@ const Teacher = () => {
 };
 
 export default Teacher;
+
+
+

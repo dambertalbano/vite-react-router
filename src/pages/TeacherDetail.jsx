@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const TeacherDetail = () => {
-  const [teacher, setTeacher] = useState({});
-  const { id } = useParams();
-  const navigate = useNavigate();
-
+  const [teacher, setTeacher] = useState([])
+  const {id} = useParams()
+  const navigate = useNavigate()
   useEffect(() => {
-    // Simulated data instead of Axios call
-    const mockTeacher = {
-      id: id,
-      name: "Yasuo Ionia",
-      email: "yasuo.ionia@gmail.com",
-      department: "BSCS",
-    };
-    setTeacher(mockTeacher);
-  }, [id]);
-
-  const getStatus = () => {
-    // Check if teacher is logged in
-    return teacher.loggedIn ? "Inactive" : "Active";
-  };
-
+      axios.get('http://localhost:3000/teacher/detail/'+id)
+      .then(result => {
+          setTeacher(result.data[0])
+      })
+      .catch(err => console.log(err))
+  }, [])
   const handleLogout = () => {
-    // Simulated logout action
-    localStorage.removeItem("valid");
-    navigate("/");
-  };
-
+      axios.get('http://localhost:3000/teacher/logout')
+      .then(result => {
+        if(result.data.Status) {
+          localStorage.removeItem("valid")
+          navigate('/')
+        }
+      }).catch(err => console.log(err))
+    }
+    
   return (
     <div className="vh-100 vw-100 detailPage">
       <div className="p-3 d-flex justify-content-center shadow bg-light p-2 text-black bg-opacity-75">
@@ -35,7 +30,7 @@ const TeacherDetail = () => {
       </div>
       <div className="d-flex justify-content-center align-items-center h-10 mt-xl-1">
         <div className="p-1 pb-1 rounded w-50 h-25 border bg-light p-2 text-black bg-opacity-75 detail">
-          <div className="d-flex align-items-flex-center flex-column mt-2 detailText">
+          <div className="d-flex align-items-flex-center flex-column mt-2">
             <h3>
               <span className="bold-label">Name:</span> {teacher.name}
             </h3>
@@ -44,10 +39,10 @@ const TeacherDetail = () => {
             </h3>
             <h3>
               <span className="bold-label">Department:</span>{" "}
-              {teacher.department}
+              {teacher.department_id}
             </h3>
             <h3>
-              <span className="bold-label">Status:</span> {getStatus()}
+              <span className="bold-label">Status:</span> 
             </h3>
 
             <button className="btn btn-dark mt-xl-5" onClick={handleLogout}>
@@ -61,3 +56,5 @@ const TeacherDetail = () => {
 };
 
 export default TeacherDetail;
+
+

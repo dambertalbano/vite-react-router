@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,95 +9,113 @@ const TeacherRegister = () => {
     password: "",
     department_id: "",
   });
-  const [department, setDepartment] = useState([]);
+  const [departments, setDepartments] = useState([]);
   const navigate = useNavigate();
 
-  // Simulated department data
-  const mockCategories = [
-    { id: 1, name: "BSHM" },
-    { id: 2, name: "BSCS" },
-    { id: 3, name: "BSBA" },
-    { id: 3, name: "BEED" },
-    { id: 3, name: "BSTM" },
-  ];
-
   useEffect(() => {
-    // Simulating department fetch
-    setDepartment(mockCategories);
+    axios
+      .get("http://localhost:3000/auth/department")
+      .then((response) => {
+        const { data } = response;
+        if (data.Status) {
+          setDepartments(data.Result);
+        } else {
+          alert(data.Error);
+        }
+      })
+      .catch((error) => console.log(error));
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simulating form submission
-    console.log("Submitted data:", teacher);
-    navigate("/teacher_login");
+  const handleSubmit = (a) => {
+    a.preventDefault();
+    axios
+      .post("http://localhost:3000/auth/add_teacher", teacher)
+      .then((response) => {
+        const { data } = response;
+        if (data.Status) {
+          navigate("/teacher_login");
+        } else {
+          alert(data.Error);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleInputChange = (a) => {
+    const { name, value } = a.target;
+    setTeacher({ ...teacher, [name]: value });
   };
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
       <div className="loginForm">
-        <h3 className="title">Register as Teacher</h3>
+        <h3 className="title">Register As Teacher</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
-            <label for="inputName" className="form-label">
+            <label htmlFor="inputName" className="form-label">
               Name
             </label>
             <input
               type="text"
               className="form-control rounded-3"
               id="inputName"
+              name="name"
               placeholder="Enter Name"
-              onChange={(e) => setTeacher({ ...teacher, name: e.target.value })}
+              value={teacher.name}
+              onChange={handleInputChange}
             />
           </div>
           <div className="col-12">
-            <label for="inputEmail4" className="form-label">
+            <label htmlFor="inputEmail4" className="form-label">
               Email
             </label>
             <input
               type="email"
               className="form-control rounded-3"
               id="inputEmail4"
+              name="email"
               placeholder="Enter Email"
               autoComplete="off"
-              onChange={(e) =>
-                setTeacher({ ...teacher, email: e.target.value })
-              }
+              value={teacher.email}
+              onChange={handleInputChange}
             />
           </div>
           <div className="col-12">
-            <label for="inputPassword4" className="form-label">
+            <label htmlFor="inputPassword4" className="form-label">
               Password
             </label>
             <input
               type="password"
               className="form-control rounded-3"
               id="inputPassword4"
+              name="password"
               placeholder="Enter Password"
-              onChange={(e) =>
-                setTeacher({ ...teacher, password: e.target.value })
-              }
+              value={teacher.password}
+              onChange={handleInputChange}
             />
           </div>
           <div className="col-12">
-            <label for="department" className="form-label">
+            <label htmlFor="department" className="form-label">
               Department
             </label>
             <select
-              name="department"
+              name="department_id"
               id="department"
               className="form-select"
-              onChange={(e) =>
-                setTeacher({ ...teacher, department_id: e.target.value })
-              }>
-              {department.map((c) => {
-                return <option value={c.id}>{c.name}</option>;
-              })}
+              value={teacher.department_id}
+              onChange={handleInputChange}
+            >
+              <option value="">Select Department</option>
+              {departments.map((dept) => (
+                <option key={dept.id} value={dept.id}>
+                  {dept.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="col-12">
-            <button type="submit" className="btn btn-custom1">
-              Register
+            <button type="submit" className="btn btn-custom1  ">
+              Add Teacher
             </button>
           </div>
         </form>

@@ -1,32 +1,29 @@
-import React, { useState } from "react";
+import axios from 'axios';
+import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
+import './style.css';
 
 const TeacherLogin = () => {
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Simulated login process instead of Axios call
-    const mockUser = {
-      email: "",
-      password: "",
-    };
-    if (
-      values.email === mockUser.email &&
-      values.password === mockUser.password
-    ) {
-      localStorage.setItem("valid", true);
-      navigate("/teacher_detail/1"); // Simulated teacher id
-    } else {
-      setError("Invalid email or password");
+    const [values, setValues] = useState({
+        email: '',
+        password: ''
+    })
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
+    axios.defaults.withCredentials = true;
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        axios.post('http://localhost:3000/teacher/teacher_login', values)
+        .then(result => {
+            if(result.data.loginStatus) {
+                localStorage.setItem("valid", true)
+                navigate('/teacher_detail/'+result.data.id)
+            } else {
+                setError(result.data.Error)
+            }
+        })
+        .catch(err => console.log(err))
     }
-  };
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
@@ -36,7 +33,7 @@ const TeacherLogin = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email">
-              <strong>Email</strong>
+              <strong>Email:</strong>
             </label>
             <input
               type="email"
@@ -49,7 +46,7 @@ const TeacherLogin = () => {
           </div>
           <div className="mb-3">
             <label htmlFor="password">
-              <strong>Password</strong>
+              <strong>Password:</strong>
             </label>
             <input
               type="password"
@@ -72,3 +69,5 @@ const TeacherLogin = () => {
 };
 
 export default TeacherLogin;
+
+

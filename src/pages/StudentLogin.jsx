@@ -1,32 +1,30 @@
-import { useState } from "react";
+import axios from 'axios';
+import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
+import './style.css';
 
 const StudentLogin = () => {
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Simulated login process instead of Axios call
-    const mockUser = {
-      email: "",
-      password: "",
-    };
-    if (
-      values.email === mockUser.email &&
-      values.password === mockUser.password
-    ) {
-      localStorage.setItem("valid", true);
-      navigate("/student_detail/1"); // Simulated student id
-    } else {
-      setError("Invalid email or password");
+    const [values, setValues] = useState({
+        email: '',
+        password: ''
+    })
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
+    axios.defaults.withCredentials = true;
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        axios.post('http://localhost:3000/student/student_login', values)
+        .then(result => {
+            if(result.data.loginStatus) {
+                localStorage.setItem("valid", true)
+                navigate('/student_detail/'+result.data.id)
+            } else {
+                setError(result.data.Error)
+            }
+        })
+        .catch(err => console.log(err))
     }
-  };
+
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">

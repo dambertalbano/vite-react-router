@@ -1,50 +1,53 @@
-import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const Home = () => {
-  const [adminTotal, setAdminTotal] = useState(0);
-  const [studentTotal, setStudentTotal] = useState(0);
-  const [teacherTotal, setTeacherTotal] = useState(0);
-  const [admins, setAdmins] = useState([]);
+  const [adminTotal, setAdminTotal] = useState(0)
+  const [studentTotal, setstudentTotal] = useState(0)
+  const [teacherTotal, setteacherTotal] = useState(0)
+  const [admins, setAdmins] = useState([])
 
   useEffect(() => {
-    // Simulating fetching admin count
-    const adminCount = () => {
-      // Mock admin count
-      const mockAdminCount = 10;
-      setAdminTotal(mockAdminCount);
-    };
-
-    // Simulating fetching student count
-    const studentCount = () => {
-      // Mock student count
-      const mockStudentCount = 20;
-      setStudentTotal(mockStudentCount);
-    };
-
-    // Simulating fetching teacher count
-    const teacherCount = () => {
-      // Mock teacher count
-      const mockTeacherCount = 15;
-      setTeacherTotal(mockTeacherCount);
-    };
-
-    // Simulating fetching admin records
-    const adminRecords = () => {
-      // Mock admin records
-      const mockAdmins = [
-        { id: 1, email: "admin1@example.com" },
-        { id: 2, email: "admin2@example.com" },
-        { id: 3, email: "admin3@example.com" },
-      ];
-      setAdmins(mockAdmins);
-    };
-
     adminCount();
     studentCount();
     teacherCount();
-    adminRecords();
-  }, []);
+    AdminRecords();
+  }, [])
 
+  const AdminRecords = () => {
+    axios.get('http://localhost:3000/auth/admin_records')
+    .then(result => {
+      if(result.data.Status) {
+        setAdmins(result.data.Result)
+      } else {
+         alert(result.data.Error)
+      }
+    })
+  }
+  const adminCount = () => {
+    axios.get('http://localhost:3000/auth/admin_count')
+    .then(result => {
+      if(result.data.Status) {
+        setAdminTotal(result.data.Result[0].admin)
+      }
+    })
+  }
+  const studentCount = () => {
+    axios.get('http://localhost:3000/auth/student_count')
+    .then(result => {
+      if(result.data.Status) {
+        setstudentTotal(result.data.Result[0].student)
+      }
+    })
+  }
+  const teacherCount = () => {
+    axios.get('http://localhost:3000/auth/teacher_count')
+    .then(result => {
+      if(result.data.Status) {
+        setteacherTotal(result.data.Result[0].teacher)
+      }
+    })
+  }
   return (
     <div>
       <div className="p-3 d-flex justify-content-around mt-3">
@@ -106,3 +109,5 @@ const Home = () => {
 };
 
 export default Home;
+
+
