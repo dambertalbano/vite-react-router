@@ -4,11 +4,13 @@ import ReactDOM from "react-dom";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import "./index.css";
+import AddAdmin from "./pages/AddAdmin";
 import AddDepartment from "./pages/AddDepartment";
 import AddStudent from "./pages/AddStudent";
 import AddTeacher from "./pages/AddTeacher";
 import Dashboard from "./pages/Dashboard";
 import Department from "./pages/Department";
+import EditAdmin from "./pages/EditAdmin";
 import EditStudent from "./pages/EditStudent";
 import EditTeacher from "./pages/EditTeacher";
 import Home from "./pages/Home";
@@ -45,8 +47,11 @@ ReactDOM.render(
           <Route path="add_department" element={<AddDepartment />} />
           <Route path="add_student" element={<AddStudent />} />
           <Route path="add_teacher" element={<AddTeacher />} />
+          <Route path="add_teacher" element={<AddTeacher />} />
+          <Route path="add_admin/:id" element={<AddAdmin />} />
           <Route path="edit_student/:id" element={<EditStudent />} />
           <Route path="edit_teacher/:id" element={<EditTeacher />} />
+          <Route path="edit_admin/:id" element={<EditAdmin />} />
         </Route>
       </Routes>
     </Router>

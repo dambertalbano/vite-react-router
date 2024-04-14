@@ -28,7 +28,7 @@ const EditTeacher = () => {
                 ...teacher,
                 name: result.data.Result[0].name,
                 email: result.data.Result[0].email,
-                department_id: result.data.Result[0].department_id,
+                department_id: result.data.Result[0].department_name,
             })
         }).catch(err => console.log(err))
     }, [])
@@ -51,7 +51,7 @@ const EditTeacher = () => {
         <h3 className="text-center">Edit Teacher</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
-            <label for="inputName" className="form-label">
+            <label htmlFor="inputName" className="form-label">
               Name
             </label>
             <input
@@ -66,7 +66,7 @@ const EditTeacher = () => {
             />
           </div>
           <div className="col-12">
-            <label for="inputEmail4" className="form-label">
+            <label htmlFor="inputEmail4" className="form-label">
               Email
             </label>
             <input
@@ -82,13 +82,18 @@ const EditTeacher = () => {
             />
           </div>
           <div className="col-12">
-            <label for="department" className="form-label">
+            <label htmlFor="department" className="form-label">
               Department
             </label>
-            <select name="department" id="department" className="form-select"
-                onChange={(a) => setTeacher({...teacher, department_id: a.target.value})}>
+            <select 
+              name="department" 
+              id="department" 
+              className="form-select"
+              value={teacher.department_id}
+              onChange={(a) => setTeacher({...teacher, department_id: a.target.value})}
+            >
               {department.map((c) => {
-                return <option value={c.id}>{c.name}</option>;
+                return <option key={c.id} value={c.id}>{c.name}</option>;
               })}
             </select>
           </div>
@@ -105,4 +110,3 @@ const EditTeacher = () => {
 }
 
 export default EditTeacher
-

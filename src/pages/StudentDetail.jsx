@@ -1,28 +1,49 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const StudentDetail = () => {
-  const [student, setStudent] = useState([])
-  const {id} = useParams()
-  const navigate = useNavigate()
+  const [student, setStudent] = useState({});
+  const [department, setDepartment] = useState({});
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   useEffect(() => {
-      axios.get('http://localhost:3000/student/detail/'+id)
-      .then(result => {
-          setStudent(result.data[0])
+    axios
+      .get(`http://localhost:3000/student/detail/${id}`)
+      .then((result) => {
+        setStudent(result.data[0]);
       })
-      .catch(err => console.log(err))
-  }, [])
-  const handleLogout = () => {
-      axios.get('http://localhost:3000/student/logout')
-      .then(result => {
-        if(result.data.Status) {
-          localStorage.removeItem("valid")
-          navigate('/')
+      .catch((err) => console.log(err));
+
+    axios
+      .get("http://localhost:3000/auth/department")
+      .then((result) => {
+        if (result.data.Status) {
+          const departmentMap = {};
+          result.data.Result.forEach((department) => {
+            departmentMap[department.id] = department.name;
+          });
+          setDepartment(departmentMap);
+        } else {
+          alert(result.data.Error);
         }
-      }).catch(err => console.log(err))
-    }
-    
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleLogout = () => {
+    axios
+      .get("http://localhost:3000/student/logout")
+      .then((result) => {
+        if (result.data.Status) {
+          localStorage.removeItem("valid");
+          navigate("/");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="vh-100 vw-100 detailPage">
       <div className="p-3 d-flex justify-content-center shadow bg-light p-2 text-black bg-opacity-75">
@@ -32,17 +53,14 @@ const StudentDetail = () => {
         <div className="p-1 pb-1 rounded w-50 h-25 border bg-light p-2 text-black bg-opacity-75 detail">
           <div className="d-flex align-items-flex-center flex-column mt-2">
             <h3>
-              <span className="bold-label">Name:</span> {student.name}
+              <span className="bold-label">Name: </span> {student.name}
             </h3>
             <h3>
               <span className="bold-label">Email:</span> {student.email}
             </h3>
             <h3>
               <span className="bold-label">Department:</span>{" "}
-              {student.department_id}
-            </h3>
-            <h3>
-              <span className="bold-label">Status:</span> 
+              {department[student.department_id]}
             </h3>
 
             <button className="btn btn-dark mt-xl-5" onClick={handleLogout}>

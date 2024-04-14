@@ -3,26 +3,45 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const TeacherDetail = () => {
-  const [teacher, setTeacher] = useState([])
-  const {id} = useParams()
-  const navigate = useNavigate()
+  const [teacher, setTeacher] = useState({});
+  const [department, setDepartment] = useState({});
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   useEffect(() => {
-      axios.get('http://localhost:3000/teacher/detail/'+id)
+    axios.get(`http://localhost:3000/teacher/detail/`+id)
       .then(result => {
-          setTeacher(result.data[0])
+        setTeacher(result.data[0]);
       })
-      .catch(err => console.log(err))
-  }, [])
-  const handleLogout = () => {
-      axios.get('http://localhost:3000/teacher/logout')
-      .then(result => {
-        if(result.data.Status) {
-          localStorage.removeItem("valid")
-          navigate('/')
+      .catch(err => console.log(err));
+
+      axios
+      .get("http://localhost:3000/auth/department")
+      .then((result) => {
+        if (result.data.Status) {
+          const departmentMap = {};
+          result.data.Result.forEach((department) => {
+            departmentMap[department.id] = department.name;
+          });
+          setDepartment(departmentMap);
+        } else {
+          alert(result.data.Error);
         }
-      }).catch(err => console.log(err))
-    }
-    
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleLogout = () => {
+    axios.get('http://localhost:3000/teacher/logout')
+      .then(result => {
+        if (result.data.Status) {
+          localStorage.removeItem("valid");
+          navigate('/');
+        }
+      })
+      .catch(err => console.log(err));
+  };
+
   return (
     <div className="vh-100 vw-100 detailPage">
       <div className="p-3 d-flex justify-content-center shadow bg-light p-2 text-black bg-opacity-75">
@@ -38,11 +57,7 @@ const TeacherDetail = () => {
               <span className="bold-label">Email:</span> {teacher.email}
             </h3>
             <h3>
-              <span className="bold-label">Department:</span>{" "}
-              {teacher.department_id}
-            </h3>
-            <h3>
-              <span className="bold-label">Status:</span> 
+              <span className="bold-label">Department:</span> {department[teacher.department_id]}
             </h3>
 
             <button className="btn btn-dark mt-xl-5" onClick={handleLogout}>
@@ -56,5 +71,3 @@ const TeacherDetail = () => {
 };
 
 export default TeacherDetail;
-
-

@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Department = () => {
 
-    const [department, setDepartment] = useState([])
-
+    const [department, setDepartment] = useState([])  
     useEffect(()=> {
         axios.get('http://localhost:3000/auth/department')
         .then(result => {
@@ -16,6 +15,17 @@ const Department = () => {
             }
         }).catch(err => console.log(err))
     }, [])
+    
+    const handleDelete = (id) => {
+      axios.delete('http://localhost:3000/auth/delete_department/'+id)
+      .then(result => {
+          if(result.data.Status) {
+              window.location.reload()
+          } else {
+              alert(result.data.Error)
+          }
+      })
+    } 
     
     return (
         <div className="px-5 mt-3">
@@ -34,8 +44,15 @@ const Department = () => {
               </thead>
               <tbody>
                 {department.map((c) => (
-                  <tr>
+                  <tr key={c.id}>
                     <td>{c.name}</td>
+                    <td>
+                      <button
+                    className="btn btn-warning btn-sm"
+                    onClick={() => handleDelete(c.id)}
+                  >
+                    Delete
+                  </button></td>
                   </tr>
                 ))}
               </tbody>

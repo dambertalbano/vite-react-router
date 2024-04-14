@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [adminTotal, setAdminTotal] = useState(0)
   const [studentTotal, setstudentTotal] = useState(0)
   const [teacherTotal, setteacherTotal] = useState(0)
   const [admins, setAdmins] = useState([])
-
   useEffect(() => {
     adminCount();
     studentCount();
@@ -24,6 +24,7 @@ const Home = () => {
       }
     })
   }
+
   const adminCount = () => {
     axios.get('http://localhost:3000/auth/admin_count')
     .then(result => {
@@ -40,6 +41,7 @@ const Home = () => {
       }
     })
   }
+
   const teacherCount = () => {
     axios.get('http://localhost:3000/auth/teacher_count')
     .then(result => {
@@ -48,6 +50,7 @@ const Home = () => {
       }
     })
   }
+
   return (
     <div>
       <div className="p-3 d-flex justify-content-around mt-3">
@@ -92,13 +95,23 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {admins.map((a) => (
-              <tr key={a.id}>
-                <td>{a.email}</td>
+          {admins.map((admin) => (
+              <tr key={admin.id}>
+                <td>{admin.email}</td>
                 <td>
-                  <button className="btn btn-custom4 btn-sm me-2">Edit</button>
-                  <button className="btn btn-custom5 btn-sm">Delete</button>
-                </td>
+                <Link
+                    to={`/dashboard/edit_admin/${admin.id}`}
+                    className="btn btn-info btn-sm me-2"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    className="btn btn-warning btn-sm"
+                    onClick={() => handleDelete(admin.id)}
+                  >
+                    Delete
+                  </button>
+                  </td>
               </tr>
             ))}
           </tbody>

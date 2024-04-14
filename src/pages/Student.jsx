@@ -3,31 +3,50 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Student = () => {
-  const [student, setStudent] = useState([]);
-  const navigate = useNavigate()
+  const [students, setStudents] = useState([]);
+  const [departments, setDepartments] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/auth/student")
       .then((result) => {
         if (result.data.Status) {
-          setStudent(result.data.Result);
+          setStudents(result.data.Result);
+        } else {
+          alert(result.data.Error);
+        }
+      })
+      .catch((err) => console.log(err));
+
+    axios
+      .get("http://localhost:3000/auth/department")
+      .then((result) => {
+        if (result.data.Status) {
+          const departmentsMap = {};
+          result.data.Result.forEach((department) => {
+            departmentsMap[department.id] = department.name;
+          });
+          setDepartments(departmentsMap);
         } else {
           alert(result.data.Error);
         }
       })
       .catch((err) => console.log(err));
   }, []);
+
   const handleDelete = (id) => {
-    axios.delete('http://localhost:3000/auth/delete_student/'+id)
-    .then(result => {
+    axios
+      .delete('http://localhost:3000/auth/delete_student/' + id)
+      .then(result => {
         if(result.data.Status) {
-            window.location.reload()
+          setStudents(students.filter(student => student.id !== id));
         } else {
-            alert(result.data.Error)
+          alert(result.data.Error);
         }
-    })
+      });
   } 
+
   return (
     <div className="px-5 mt-3">
       <div className="d-flex justify-content-center">
@@ -42,24 +61,26 @@ const Student = () => {
             <tr>
               <th>Name</th>
               <th>Email</th>
+              <th>Department</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {student.map((e) => (
-              <tr>
-                <td>{e.name}</td>
-                <td>{e.email}</td>
+            {students.map((student) => (
+              <tr key={student.id}>
+                <td>{student.name}</td>
+                <td>{student.email}</td>
+                <td>{departments[student.department_id]}</td>
                 <td>
                   <Link
-                    to={`/dashboard/edit_student/` + e.id}
+                    to={`/dashboard/edit_student/${student.id}`}
                     className="btn btn-info btn-sm me-2"
                   >
                     Edit
                   </Link>
                   <button
                     className="btn btn-warning btn-sm"
-                    onClick={() => handleDelete(e.id)}
+                    onClick={() => handleDelete(student.id)}
                   >
                     Delete
                   </button>
